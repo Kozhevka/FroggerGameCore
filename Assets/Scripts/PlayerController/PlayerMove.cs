@@ -10,6 +10,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] Transform playerBody;
     private Vector3 velocity = Vector3.zero;
 
+    [SerializeField] GameObject barrierSpawnObject;
+    BarrierSpawn barrierSpawnScript;
+
+    
+
 
     
     public bool playerStatic = true;
@@ -19,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        barrierSpawnScript = barrierSpawnObject.GetComponent<BarrierSpawn>();
     }
 
     // Update is called once per frame
@@ -63,9 +68,10 @@ public class PlayerMove : MonoBehaviour
             playerStatic = false;
     }
 
-    private void MoveForward()
+    public void MoveForward()
     {
         float nextPosition = transform.position.z + stepDistance;
         transform.position = new Vector3(transform.position.x, transform.position.y, nextPosition);
+        barrierSpawnScript.SpawnOneRoad();
     }
 }
