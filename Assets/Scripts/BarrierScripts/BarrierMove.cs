@@ -5,7 +5,9 @@ using UnityEngine;
 public class BarrierMove : MonoBehaviour
 {
 
-    public float moveSpeed = 3f;
+    public float moveSpeed;
+    float minSpeed = 1;
+    float maxSpeed = 3;
     float randomFloat;
     [SerializeField] GameObject mainBarrier;
 
@@ -23,6 +25,7 @@ public class BarrierMove : MonoBehaviour
         randomFloat = Random.Range(0f, 1f);
         startPos = transform.position;
         repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
+        moveSpeed = Random.Range(minSpeed, maxSpeed);
     }
 
     // Update is called once per frame

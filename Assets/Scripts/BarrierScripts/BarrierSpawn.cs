@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,9 +13,10 @@ public class BarrierSpawn : MonoBehaviour
     [SerializeField] GameObject[] barriers;
     [SerializeField] GameObject[] ground;
 
-    [SerializeField] float distanceToSpawn;
+    [SerializeField] float distanceToSpawn = 30f;
     float spawnZPosition;
 
+    float randRange = 10;
     
     
 
@@ -40,8 +40,8 @@ public class BarrierSpawn : MonoBehaviour
 
     public void SpawnOneRoad()
     {
-        Vector3 spawnPos = new Vector3(0f, 0f, spawnZPosition);
-        int pickedBarrier = 0;
+        Vector3 spawnPos = new Vector3(Random.Range(-randRange, randRange), 0f, spawnZPosition);
+        int pickedBarrier = Random.Range(0, barriers.Length);
         Instantiate(barriers[pickedBarrier], spawnPos, Quaternion.identity);
 
     }

@@ -14,11 +14,11 @@ public class BarrierDublicate : MonoBehaviour
     void Start()
     {
         //dublicate Road.  You add 1 prefab of road. Creating 2 additional road.
-
+        float startPositionX = transform.position.x;
         float barrierLeght = objectSample.GetComponent<BoxCollider>().size.x;
 
-        Vector3 leftDublicateSpawnPos = new Vector3(-(barrierLeght), 0f, transform.position.z);
-        Vector3 rightDublicateSpawnPos = new Vector3((barrierLeght), 0f, transform.position.z);
+        Vector3 leftDublicateSpawnPos = new Vector3((-(barrierLeght) + startPositionX), 0f, transform.position.z);
+        Vector3 rightDublicateSpawnPos = new Vector3(((barrierLeght) + startPositionX), 0f, transform.position.z);
 
         //dublicate childRoad for barrier  
         GameObject leftBarrier = Instantiate(objectSample, leftDublicateSpawnPos, Quaternion.identity);
