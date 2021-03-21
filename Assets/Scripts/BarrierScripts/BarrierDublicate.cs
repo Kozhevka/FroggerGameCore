@@ -11,7 +11,7 @@ public class BarrierDublicate : MonoBehaviour
 
     BarrierMove barierMoveScript;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //dublicate Road.  You add 1 prefab of road. Creating 2 additional road.
         float startPositionX = transform.position.x;
@@ -23,8 +23,8 @@ public class BarrierDublicate : MonoBehaviour
         //dublicate childRoad for barrier  
         GameObject leftBarrier = Instantiate(objectSample, leftDublicateSpawnPos, Quaternion.identity);
         leftBarrier.transform.parent = gameObject.transform;
-        GameObject rightBarrier = Instantiate(objectSample, rightDublicateSpawnPos, Quaternion.identity);
-        rightBarrier.transform.parent = gameObject.transform;
+        //GameObject rightBarrier = Instantiate(objectSample, rightDublicateSpawnPos, Quaternion.identity);
+        //rightBarrier.transform.parent = gameObject.transform;
 
         
     }

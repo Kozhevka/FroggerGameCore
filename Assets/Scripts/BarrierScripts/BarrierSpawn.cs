@@ -16,7 +16,7 @@ public class BarrierSpawn : MonoBehaviour
     [SerializeField] float distanceToSpawn = 30f;
     float spawnZPosition;
 
-    float randRange = 10;
+    float randSpawnXRange = 4;
     
     
 
@@ -40,17 +40,15 @@ public class BarrierSpawn : MonoBehaviour
 
     public void SpawnOneRoad()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-randRange, randRange), 0f, spawnZPosition);
+        Vector3 spawnPos = new Vector3(Random.Range(-randSpawnXRange, randSpawnXRange), 0f, spawnZPosition);
         int pickedBarrier = Random.Range(0, barriers.Length);
+
         //Instantiate(barriers[pickedBarrier], spawnPos, Quaternion.identity);
+
         GameObject barrier = BarrierPool.SharedInstance.GetPooledObject();
         if (barrier != null)
         {
             barrier.transform.position = spawnPos;
-            Debug.Log($"spawn pos now = {spawnPos}");
-            Debug.Log($"spawnZpos now = {spawnZPosition}");
-            Debug.Log($"distance to spawn now = {distanceToSpawn}");
-
             barrier.transform.rotation = Quaternion.identity;
             barrier.SetActive(true);
         }

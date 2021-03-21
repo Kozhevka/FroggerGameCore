@@ -38,11 +38,12 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
                 MoveForward();
 
-            if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyCode.A)) //else for disable diogonale move
                 MoveLeft();
 
-            if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.D))
                 MoveRight();
+            
         }
 
     }

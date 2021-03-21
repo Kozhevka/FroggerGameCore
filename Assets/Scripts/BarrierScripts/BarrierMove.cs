@@ -22,43 +22,53 @@ public class BarrierMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //randomFloat = Random.Range(0f, 1f);
+        //startPos = transform.position;
+        //repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
+        //moveSpeed = Random.Range(minSpeed, maxSpeed);
+        //
+        //if (randomFloat > 0.5f) // rotate for forward move direction
+        //{
+        //    moveLeftB = true;
+        //    transform.Rotate(0, 180, 0);
+        //}
+    }
+    private void OnEnable()
+    {
         randomFloat = Random.Range(0f, 1f);
         startPos = transform.position;
         repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
         moveSpeed = Random.Range(minSpeed, maxSpeed);
-    }
 
+        if (randomFloat > 0.5f) // rotate for forward move direction
+        {
+            moveLeftB = true;
+            transform.Rotate(0, 180, 0);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
 
-        if (randomFloat > 0.5f)
-            MoveLeft();
-        else
-            MoveRight();
+        Move();
     }
 
-    void MoveLeft()
+    void Move()
     {
-
-        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-        moveLeftB = true;
+        
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        
 
         if (transform.position.x < startPos.x - repeatWight)
         {
             transform.position = startPos;
         }
-    }
-
-    void MoveRight()
-    {
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-        moveLeftB = false;
-
-        if (transform.position.x > startPos.x + repeatWight)
+        else if (transform.position.x > startPos.x + repeatWight)
         {
             transform.position = startPos;
         }
     }
+
+    
     
 }

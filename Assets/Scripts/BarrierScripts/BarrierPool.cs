@@ -48,7 +48,9 @@ public class BarrierPool : MonoBehaviour
             return pooledObjects[randomBarrierr];
         }
         
-        return null;
+        //Aslo we can add there other prefabs(if randomBarrier will be active.
+
+        return null;//clean road
     }
 
     // Update is called once per frame
