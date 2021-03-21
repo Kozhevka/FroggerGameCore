@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrierDelete : MonoBehaviour
+public class BarrierDeactivate : MonoBehaviour
 {
     Transform player;
     float barrier = 10f;
@@ -16,6 +16,6 @@ public class BarrierDelete : MonoBehaviour
     void Update()
     {
         if ((player.position.z - barrier) > transform.position.z)
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 }

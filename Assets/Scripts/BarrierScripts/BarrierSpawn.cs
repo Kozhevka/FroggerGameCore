@@ -42,7 +42,18 @@ public class BarrierSpawn : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(Random.Range(-randRange, randRange), 0f, spawnZPosition);
         int pickedBarrier = Random.Range(0, barriers.Length);
-        Instantiate(barriers[pickedBarrier], spawnPos, Quaternion.identity);
+        //Instantiate(barriers[pickedBarrier], spawnPos, Quaternion.identity);
+        GameObject barrier = BarrierPool.SharedInstance.GetPooledObject();
+        if (barrier != null)
+        {
+            barrier.transform.position = spawnPos;
+            Debug.Log($"spawn pos now = {spawnPos}");
+            Debug.Log($"spawnZpos now = {spawnZPosition}");
+            Debug.Log($"distance to spawn now = {distanceToSpawn}");
+
+            barrier.transform.rotation = Quaternion.identity;
+            barrier.SetActive(true);
+        }
 
     }
 
