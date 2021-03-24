@@ -19,13 +19,7 @@ public class BarrierPool : MonoBehaviour
     {
         pooledObjects = new List<GameObject>();
         GameObject tmp;
-        /*for (int i = 0; i < barrierToPoolList.Length; i++)
-        {
-            for (int b = 0; b < amountToPool; b++)
-            {
-                
-            }
-        }*/
+        
         for (int i = 0; i < barrierToPoolList.Length; i++)
         {
             for (int b = 0; b < amountToPool; b++)

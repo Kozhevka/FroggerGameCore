@@ -6,17 +6,21 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     //[SerializeField] float playerMoveSpeed = 0.025f;
-    [SerializeField] float stepDistance;
+    public float stepDistance;
     [SerializeField] Transform playerBody;
     private Vector3 velocity = Vector3.zero;
+    ScoreCount scoreCountScript;
 
     [SerializeField] GameObject barrierSpawnObject;
     BarrierSpawn barrierSpawnScript;
 
-    
+    [SerializeField] float borderOfPlayzone;
+
+    private Transform thisTransform;
 
 
-    
+
+
     public bool playerStatic = true;
 
 
@@ -25,6 +29,10 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         barrierSpawnScript = barrierSpawnObject.GetComponent<BarrierSpawn>();
+
+        scoreCountScript = GameObject.Find("GameManager").GetComponent<ScoreCount>();
+
+        thisTransform = gameObject.GetComponent<Transform>(); //optimization step;
     }
 
     // Update is called once per frame
@@ -33,7 +41,12 @@ public class PlayerMove : MonoBehaviour
 
         CheckIfStatic();
 
-        if (playerStatic)
+        
+
+        if (playerStatic) //move input
+
+
+
         {
             if (Input.GetKeyDown(KeyCode.W))
                 MoveForward();
@@ -49,30 +62,40 @@ public class PlayerMove : MonoBehaviour
     }
 
     
+
     private void MoveRight()
     {
-        float nextPosition = transform.position.x + stepDistance;
-        transform.position = new Vector3(nextPosition, transform.position.y, transform.position.z);
+        if (thisTransform.position.x < borderOfPlayzone)
+        {
+            float nextPosition = thisTransform.position.x + stepDistance;
+            thisTransform.position = new Vector3(nextPosition, thisTransform.position.y, thisTransform.position.z);
+        }
     }
 
     private void MoveLeft()
     {
-        float nextPosition = transform.position.x - stepDistance;
-        transform.position = new Vector3(nextPosition, transform.position.y, transform.position.z);
+        if (thisTransform.position.x > -borderOfPlayzone)
+        {
+            float nextPosition = thisTransform.position.x - stepDistance;
+            thisTransform.position = new Vector3(nextPosition, thisTransform.position.y, thisTransform.position.z);
+        }
     }
 
     private void CheckIfStatic()
     {
-        if (transform.position == playerBody.position)
+        if (thisTransform.position == playerBody.position)
             playerStatic = true;
-        else if (transform.position != playerBody.position)
+        else if (thisTransform.position != playerBody.position)
             playerStatic = false;
     }
 
     public void MoveForward()
     {
-        float nextPosition = transform.position.z + stepDistance;
-        transform.position = new Vector3(transform.position.x, transform.position.y, nextPosition);
+        float nextPosition = thisTransform.position.z + stepDistance;
+        thisTransform.position = new Vector3(thisTransform.position.x, thisTransform.position.y, nextPosition);
+
         barrierSpawnScript.SpawnOneRoad();
+
+        scoreCountScript.OneStepScore();
     }
 }

@@ -4,11 +4,28 @@ using UnityEngine;
 
 public class PlayerCheckCollision : MonoBehaviour
 {
-    [SerializeField] bool gameOver = false;
+    
+
+    // Game manager (game status)
+    GameObject gameManagerObject;
+    GameStatusEnum gameStatusEnumScript;
+
+
+    // Player Manager (visual stuff)
+    GameObject playerManagerObject;
+
+    PlayerSkinEnum playerSkinEnumScript;
+    EnviromentSkinEnum enviromentSkinEnumScript;
     // Start is called before the first frame update
     void Start()
     {
+        gameManagerObject = GameObject.Find("GameManager");
+        gameStatusEnumScript = gameManagerObject.GetComponent<GameStatusEnum>();
         
+
+        playerManagerObject = GameObject.Find("PlayerManager");
+        playerSkinEnumScript = playerManagerObject.GetComponent<PlayerSkinEnum>();
+        enviromentSkinEnumScript = playerManagerObject.GetComponent<EnviromentSkinEnum>();
     }
 
     // Update is called once per frame
@@ -22,7 +39,9 @@ public class PlayerCheckCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Barrier"))
         {
             Debug.Log("Game Over!");
-            gameOver = true;
+            //gameStatusEnumScript.GameStatus = GameStatusEnum.GameStatus.GameOver;
+            
         }
     }
+    
 }
