@@ -13,7 +13,7 @@ public class BarrierSpawn : MonoBehaviour
     [SerializeField] GameObject[] barriers;
     [SerializeField] GameObject[] ground;
 
-    [SerializeField] float distanceToSpawn = 30f;
+    public float distanceToSpawn = 30f;
     float spawnZPosition;
 
     float randSpawnXRange = 4;
@@ -33,9 +33,9 @@ public class BarrierSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(0f, 0f, playerObject.transform.position.z);
+        this.transform.position = new Vector3(0f, 0f, playerObject.transform.position.z);
 
-        spawnZPosition = transform.position.z + distanceToSpawn;
+        spawnZPosition = this.transform.position.z + distanceToSpawn;
     }
 
     public void SpawnOneRoad()

@@ -41,4 +41,8 @@ public class ScoreCount : MonoBehaviour
     {
         score += scoreWithDifficultyValue;
     }
+    public void RestartScore()
+    {
+        Score = 0;
+    }
 }

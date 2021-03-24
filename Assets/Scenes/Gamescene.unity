@@ -1233,9 +1233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219a6370c3056014fb207d9a0e394c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gettedScore: {fileID: 886843129}
   ui_GameIsActive: {fileID: 463770882}
   ui_GameOver: {fileID: 1190127426}
   ui_StartMenu: {fileID: 283173658}
+  playerNextPosition: {fileID: 577027992}
+  playerCurrentPosition: {fileID: 707583593}
 --- !u!1 &439474821
 GameObject:
   m_ObjectHideFlags: 0

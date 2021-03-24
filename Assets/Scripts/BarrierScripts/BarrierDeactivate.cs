@@ -5,17 +5,20 @@ using UnityEngine;
 public class BarrierDeactivate : MonoBehaviour
 {
     Transform player;
-    float barrier = 10f;
+    public float barrier = 10f;
+    float spawnPos;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("PlayerNextPosition").transform;
+        spawnPos = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierSpawn>().distanceToSpawn;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((player.position.z - barrier) > transform.position.z)
+        if ((player.position.z - barrier) > this.transform.position.z 
+            || this.transform.position.z > (player.position.z + spawnPos - 1f))
             gameObject.SetActive(false);
     }
 }

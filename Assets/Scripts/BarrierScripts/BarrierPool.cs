@@ -6,9 +6,11 @@ public class BarrierPool : MonoBehaviour
 {
     public static BarrierPool SharedInstance;
     public List<GameObject> pooledObjects;
+    
     public GameObject[] barrierToPoolList;
     public int amountToPool;
 
+    BarrierStartSpawn barrierStartSpawn;
 
     private void Awake()
     {
@@ -29,27 +31,44 @@ public class BarrierPool : MonoBehaviour
                 pooledObjects.Add(tmp);
             }
         }
-        
+
+        BarrierStartSpawn.StartGameSpawner.RestartSpawn();
     }
 
     public GameObject GetPooledObject()
     {
-        int barrierCurrentPool = amountToPool * barrierToPoolList.Length;
+        int barrierCurrentPool = (amountToPool * barrierToPoolList.Length)-1;
         
-        int randomBarrierr = Random.Range(0, barrierCurrentPool - 1);
-        if(!pooledObjects[randomBarrierr].activeInHierarchy)
+
+
+        int randomBarrierr = Random.Range(0, barrierCurrentPool);
+        bool returnConfirm = false;
+
+        while (!returnConfirm)
         {
-            return pooledObjects[randomBarrierr];
+            if (!pooledObjects[randomBarrierr].activeInHierarchy)
+            {
+                returnConfirm = true;
+                return pooledObjects[randomBarrierr];
+            }
+            else
+            {
+                randomBarrierr = Random.Range(0, barrierCurrentPool);
+            }
         }
+
+        
         
         //Aslo we can add there other prefabs(if randomBarrier will be active.
 
-        return null;//clean road
+        return null; //clean road
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DeactivateAllPooledObjects()
     {
-        
+        foreach (var item in pooledObjects)
+        {
+            item.SetActive(false);
+        }
     }
 }
