@@ -26,6 +26,9 @@ public class PlayerMove : MonoBehaviour
 
 
 
+    float distanceToSpawn;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,8 @@ public class PlayerMove : MonoBehaviour
         thisTransform = this.gameObject.GetComponent<Transform>(); //optimization step;
 
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
+
+        distanceToSpawn = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierSpawn>().distanceToSpawn;
     }
 
     // Update is called once per frame
@@ -94,7 +99,7 @@ public class PlayerMove : MonoBehaviour
         float nextPosition = thisTransform.position.z + stepDistance;
         thisTransform.position = new Vector3(thisTransform.position.x, thisTransform.position.y, nextPosition);
 
-        barrierSpawnScript.SpawnOneRoad();
+        barrierSpawnScript.SpawnOneRoad(thisTransform.position.z + distanceToSpawn - stepDistance);
 
         scoreCountScript.OneStepScore();
     }

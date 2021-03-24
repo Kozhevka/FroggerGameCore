@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 439474823}
   - component: {fileID: 439474822}
   m_Layer: 0
-  m_Name: Floor
+  m_Name: StartFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,8 +1329,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439474821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 240}
-  m_LocalScale: {x: 3, y: 10, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalScale: {x: 7, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2979,13 +2979,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.26779485, y: -0.14653338, z: 0.041246578, w: 0.9513741}
+  m_LocalRotation: {x: 0.26997486, y: -0.08170317, z: 0.022998022, w: 0.959119}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1282104183}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 31.442, y: -17.512, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.442, y: -9.738, z: 0}
 --- !u!1 &1090712388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,7 +3657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 577027992}
   moveSpeed: 0.1
-  camepaPreferPosition: {x: 3.56, y: 9.28, z: -8.04}
+  camepaPreferPosition: {x: 1.65, y: 9.28, z: -8.04}
 --- !u!4 &1282104183
 Transform:
   m_ObjectHideFlags: 0
@@ -3666,7 +3666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282104181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.56, y: 9.28, z: -8.04}
+  m_LocalPosition: {x: 1.65, y: 9.28, z: -8.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -4073,6 +4073,7 @@ GameObject:
   - component: {fileID: 1884653095}
   - component: {fileID: 1884653094}
   - component: {fileID: 1884653096}
+  - component: {fileID: 1884653097}
   m_Layer: 0
   m_Name: BarrierSpawnManager
   m_TagString: Untagged
@@ -4094,9 +4095,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 577027991}
   barriers:
-  - {fileID: 3729230647353391062, guid: c44ea51f5d211444d909d9ec374abd30, type: 3}
-  - {fileID: 3729230647353391062, guid: ab3081650f103ab4ab7164909a10b188, type: 3}
-  - {fileID: 3729230647353391062, guid: e4377bf6d5a3be9448a53067361ac034, type: 3}
+  - {fileID: 294370413089123641, guid: 5bf0e98192a38f0489e1c3b76b3bf71f, type: 3}
+  - {fileID: 5479037124664945681, guid: 5bcd9268c266b944ea4c9be1be39a963, type: 3}
+  - {fileID: 8110735058388948545, guid: dce5c37e4c9bece40ab37dc9e92a1fda, type: 3}
   ground: []
   distanceToSpawn: 30
 --- !u!4 &1884653095
@@ -4127,10 +4128,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   barrierToPoolList:
-  - {fileID: 3729230647353391062, guid: c44ea51f5d211444d909d9ec374abd30, type: 3}
-  - {fileID: 3729230647353391062, guid: ab3081650f103ab4ab7164909a10b188, type: 3}
-  - {fileID: 3729230647353391062, guid: e4377bf6d5a3be9448a53067361ac034, type: 3}
+  - {fileID: 294370413089123641, guid: 5bf0e98192a38f0489e1c3b76b3bf71f, type: 3}
+  - {fileID: 5479037124664945681, guid: 5bcd9268c266b944ea4c9be1be39a963, type: 3}
+  - {fileID: 8110735058388948545, guid: dce5c37e4c9bece40ab37dc9e92a1fda, type: 3}
   amountToPool: 25
+--- !u!114 &1884653097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884653093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532c94b289a90fc428226190ff10efaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoveObj: {fileID: 577027991}
+  barriers: []
 --- !u!1 &2097996417
 GameObject:
   m_ObjectHideFlags: 0

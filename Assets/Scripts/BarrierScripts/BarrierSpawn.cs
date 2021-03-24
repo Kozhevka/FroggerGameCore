@@ -35,12 +35,12 @@ public class BarrierSpawn : MonoBehaviour
     {
         this.transform.position = new Vector3(0f, 0f, playerObject.transform.position.z);
 
-        spawnZPosition = this.transform.position.z + distanceToSpawn;
+        //spawnZPosition = this.transform.position.z + distanceToSpawn;
     }
 
-    public void SpawnOneRoad()
+    public void SpawnOneRoad(float spawnPositionZ)
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-randSpawnXRange, randSpawnXRange), 0f, spawnZPosition);
+        Vector3 spawnPos = new Vector3(Random.Range(-randSpawnXRange, randSpawnXRange), 0f, spawnPositionZ);
         int pickedBarrier = Random.Range(0, barriers.Length);
 
         //Instantiate(barriers[pickedBarrier], spawnPos, Quaternion.identity);

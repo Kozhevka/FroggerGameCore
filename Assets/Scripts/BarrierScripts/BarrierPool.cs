@@ -33,6 +33,7 @@ public class BarrierPool : MonoBehaviour
         }
 
         BarrierStartSpawn.StartGameSpawner.RestartSpawn();
+        Debug.Log("StartPool");
     }
 
     public GameObject GetPooledObject()

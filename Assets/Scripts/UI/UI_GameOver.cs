@@ -48,11 +48,13 @@ public class UI_GameOver : MonoBehaviour
         ui_StartMenu.SetActive(true);
         BarrierPool.SharedInstance.DeactivateAllPooledObjects();
 
-        barrierStartSpawnScript.RestartSpawn();
-        playerNextPosition.transform.position = Vector3.zero;
-        playerCurrentPosition.transform.position = Vector3.zero;
-
         
+        playerNextPosition.transform.position = Vector3.zero;
+        barrierStartSpawnScript.RestartSpawn();
+
+        playerCurrentPosition.transform.position = Vector3.zero;
+        
+
 
         scoreCount.RestartScore();
         gameStatusEnum.gameStatus = GameStatus.StartMenu;

@@ -47,7 +47,7 @@ public class GameStatusEnum : MonoBehaviour
         }
     }
 
-    public GameStatus ChangeGameStatus (GameStatus setGameStatus)
+    /*public GameStatus ChangeGameStatus (GameStatus setGameStatus)
     {
         if (setGameStatus == GameStatus.StartMenu)
             gameStatus = GameStatus.StartMenu;
@@ -59,6 +59,6 @@ public class GameStatusEnum : MonoBehaviour
             gameStatus = GameStatus.GameOver;
               
         return setGameStatus;
-    }
+    }*/
 
 }   
