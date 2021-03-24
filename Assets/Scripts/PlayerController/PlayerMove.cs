@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameStatusEnum;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     private Transform thisTransform;
 
-
+    GameStatusEnum gameStatusEnum;
 
 
     public bool playerStatic = true;
@@ -32,7 +33,9 @@ public class PlayerMove : MonoBehaviour
 
         scoreCountScript = GameObject.Find("GameManager").GetComponent<ScoreCount>();
 
-        thisTransform = gameObject.GetComponent<Transform>(); //optimization step;
+        thisTransform = this.gameObject.GetComponent<Transform>(); //optimization step;
+
+        gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
     }
 
     // Update is called once per frame
@@ -43,10 +46,7 @@ public class PlayerMove : MonoBehaviour
 
         
 
-        if (playerStatic) //move input
-
-
-
+        if (playerStatic && gameStatusEnum.gameStatus == GameStatus.GameIsActive) //move input
         {
             if (Input.GetKeyDown(KeyCode.W))
                 MoveForward();

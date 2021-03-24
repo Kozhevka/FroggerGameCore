@@ -9,13 +9,14 @@ public class GameStatusEnum : MonoBehaviour
     [SerializeField] bool isGameActive;
     [SerializeField] bool GameOver;
 
-    enum GameStatus
+    public enum GameStatus
     {
         StartMenu,
         GameIsActive,
+        Pause,
         GameOver
     }
-    GameStatus gameStatus;
+    public GameStatus gameStatus;
 
     
 
@@ -46,7 +47,7 @@ public class GameStatusEnum : MonoBehaviour
         }
     }
 
-    GameStatus ShangeGameStatus (GameStatus setGameStatus)
+    public GameStatus ChangeGameStatus (GameStatus setGameStatus)
     {
         if (setGameStatus == GameStatus.StartMenu)
             gameStatus = GameStatus.StartMenu;

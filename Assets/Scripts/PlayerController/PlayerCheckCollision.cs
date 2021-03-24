@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerCheckCollision : MonoBehaviour
 {
     
 
     // Game manager (game status)
     GameObject gameManagerObject;
-    GameStatusEnum gameStatusEnumScript;
+    
 
 
     // Player Manager (visual stuff)
@@ -20,7 +21,7 @@ public class PlayerCheckCollision : MonoBehaviour
     void Start()
     {
         gameManagerObject = GameObject.Find("GameManager");
-        gameStatusEnumScript = gameManagerObject.GetComponent<GameStatusEnum>();
+        
         
 
         playerManagerObject = GameObject.Find("PlayerManager");
@@ -39,8 +40,9 @@ public class PlayerCheckCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Barrier"))
         {
             Debug.Log("Game Over!");
-            //gameStatusEnumScript.GameStatus = GameStatusEnum.GameStatus.GameOver;
-            
+
+            gameManagerObject.GetComponent<UI_GameOver>().GameOver();
+
         }
     }
     
