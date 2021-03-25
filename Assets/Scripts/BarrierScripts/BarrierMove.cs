@@ -10,6 +10,7 @@ public class BarrierMove : MonoBehaviour
     float maxSpeed = 3;
     float randomFloat;
     [SerializeField] GameObject mainBarrier;
+    [SerializeField] Transform thisPrefabTransform;
 
     //repeat lehht
     private Vector3 startPos;
@@ -17,20 +18,22 @@ public class BarrierMove : MonoBehaviour
 
     //
     public bool moveLeftB = false;
-    
 
-    
-    private void OnEnable()
+
+    //Start (no OnEnable) because we already got random take fromPool. 
+    //And also if onEnable we have bad Awake in BarrierDublicate.cs >
+    // > (take - in x axis position spawn (For now, i don`t know why)
+    private void Start() 
     {
         randomFloat = Random.Range(0f, 1f);
         startPos = transform.position;
         repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
         moveSpeed = Random.Range(minSpeed, maxSpeed);
 
-        if (randomFloat > 0.5f) // rotate for forward move direction
+        if (randomFloat > 0.5f) // rotate for "forward" move direction
         {
             moveLeftB = true;
-            transform.Rotate(0, 180, 0);
+            thisPrefabTransform.transform.Rotate(0, 180, 0); //thisPrefab for rotate dublicate objects too
         }
     }
 

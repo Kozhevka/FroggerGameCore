@@ -857,6 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   mainBarrier: {fileID: 8381044579679279155}
+  thisPrefabTransform: {fileID: 5283187613100251645}
   moveLeftB: 0
 --- !u!114 &8381044579643352948
 MonoBehaviour:
