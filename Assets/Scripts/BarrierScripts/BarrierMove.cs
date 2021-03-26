@@ -33,11 +33,11 @@ public class BarrierMove : MonoBehaviour
         repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
         moveSpeed = Random.Range(minSpeed, maxSpeed);
 
-        if (randomFloat > 0.5f) // rotate for "forward" move direction
+        /*if (randomFloat > 0.5f) // rotate for "forward" move direction
         {
             moveLeftB = true;
             thisPrefabTransform.transform.Rotate(0, 180, 0); //thisPrefab for rotate dublicate objects too
-        }
+        }*/
     }
 
     private void OnEnable()

@@ -17,10 +17,10 @@ public class BarrierSpawn : MonoBehaviour
     float spawnZPosition;
 
     float randSpawnXRange = 4;
-    
-    
 
-    
+    bool rotateBarierForCorrectQueue = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +49,20 @@ public class BarrierSpawn : MonoBehaviour
         if (barrier != null)
         {
             barrier.transform.position = spawnPos;
-            barrier.transform.rotation = Quaternion.identity;
+            
+
+
+            if (rotateBarierForCorrectQueue)
+            {
+                barrier.transform.rotation = Quaternion.identity;
+                rotateBarierForCorrectQueue = false;
+            }
+            else
+            {
+                barrier.transform.rotation = new Quaternion(0, 180, 0, 0);
+                rotateBarierForCorrectQueue = true;
+            }
+
             barrier.SetActive(true);
         }
 
