@@ -56,33 +56,26 @@ public class PlayerMove : MonoBehaviour
         if (playerStatic && gameStatusEnum.gameStatus == GameStatus.GameIsActive) //move input
         {
             if (Input.GetKeyDown(KeyCode.W))
-                MoveForward();
+                MovePlayer(0, stepDistance, true);
 
             else if (Input.GetKeyDown(KeyCode.A)) //else for disable diogonale move
-                MoveLeft();
-
+                MovePlayer(-stepDistance, 0, false);
+            
             else if (Input.GetKeyDown(KeyCode.D))
-                MoveRight();
+                MovePlayer(stepDistance, 0, false);
 
         }
     }
 
-
-    private void MoveRight()
+    private void MovePlayer(float sideStepDistance, float forwardStepDistance, bool forwardMove)
     {
-        if (thisTransform.position.x < borderOfPlayzone)
-        {
-            float nextPosition = thisTransform.position.x + stepDistance;
-            thisTransform.position = new Vector3(nextPosition, thisTransform.position.y, thisTransform.position.z);
-        }
-    }
+        float nextPosition = thisTransform.position.z + stepDistance;
+        thisTransform.position = new Vector3(thisTransform.position.x + sideStepDistance, thisTransform.position.y, thisTransform.position.z + forwardStepDistance);
 
-    private void MoveLeft()
-    {
-        if (thisTransform.position.x > -borderOfPlayzone)
+        if (forwardMove)
         {
-            float nextPosition = thisTransform.position.x - stepDistance;
-            thisTransform.position = new Vector3(nextPosition, thisTransform.position.y, thisTransform.position.z);
+            barrierSpawnScript.SpawnOneRoad(thisTransform.position.z + distanceToSpawn - stepDistance);
+            scoreCountScript.OneStepScore();
         }
     }
 
@@ -94,13 +87,4 @@ public class PlayerMove : MonoBehaviour
             playerStatic = false;
     }
 
-    public void MoveForward()
-    {
-        float nextPosition = thisTransform.position.z + stepDistance;
-        thisTransform.position = new Vector3(thisTransform.position.x, thisTransform.position.y, nextPosition);
-
-        barrierSpawnScript.SpawnOneRoad(thisTransform.position.z + distanceToSpawn - stepDistance);
-
-        scoreCountScript.OneStepScore();
-    }
 }

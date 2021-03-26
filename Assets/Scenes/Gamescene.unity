@@ -2979,13 +2979,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.34560043, y: -0.08327699, z: 0.016409332, w: 0.93453526}
+  m_LocalRotation: {x: 0.40657842, y: -0.08417905, z: 0.010872432, w: 0.90966463}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1282104183}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40.443, y: -10.93, z: -2.025}
+  m_LocalEulerAnglesHint: {x: 47.862, y: -12.421, z: -4.16}
 --- !u!1 &1090712388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,7 +3657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 577027992}
   moveSpeed: 0.1
-  camepaPreferPosition: {x: 1.65, y: 9.28, z: -5.63}
+  camepaPreferPosition: {x: 1.65, y: 10.46, z: -3.6}
 --- !u!4 &1282104183
 Transform:
   m_ObjectHideFlags: 0
@@ -3666,7 +3666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282104181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.65, y: 9.28, z: -5.63}
+  m_LocalPosition: {x: 1.65, y: 10.46, z: -3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -4094,11 +4094,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 577027991}
-  barriers:
-  - {fileID: 294370413089123641, guid: 5bf0e98192a38f0489e1c3b76b3bf71f, type: 3}
-  - {fileID: 5479037124664945681, guid: 5bcd9268c266b944ea4c9be1be39a963, type: 3}
-  - {fileID: 8110735058388948545, guid: dce5c37e4c9bece40ab37dc9e92a1fda, type: 3}
-  ground: []
   distanceToSpawn: 30
 --- !u!4 &1884653095
 Transform:
@@ -4126,12 +4121,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae075b8e6b8b0544b2a7fe50945ee0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjects: []
-  barrierToPoolList:
+  pooledCars: []
+  pooledRoads: []
+  barrierCarsToPoolList:
   - {fileID: 294370413089123641, guid: 5bf0e98192a38f0489e1c3b76b3bf71f, type: 3}
   - {fileID: 5479037124664945681, guid: 5bcd9268c266b944ea4c9be1be39a963, type: 3}
   - {fileID: 8110735058388948545, guid: dce5c37e4c9bece40ab37dc9e92a1fda, type: 3}
-  amountToPool: 25
+  roadToPoolList: {fileID: 7121868281827831176, guid: 54f10d7bdcc88cd449e0ecc8bc7ef3e7, type: 3}
+  amountCarToPool: 25
+  amountRoadToPool: 18
 --- !u!114 &1884653097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,7 +4143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoveObj: {fileID: 577027991}
-  barriers: []
 --- !u!1 &2097996417
 GameObject:
   m_ObjectHideFlags: 0

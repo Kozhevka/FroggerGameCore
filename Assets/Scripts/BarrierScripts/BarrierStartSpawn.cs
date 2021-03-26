@@ -9,9 +9,6 @@ public class BarrierStartSpawn : MonoBehaviour
     float distanceToMainSpawn = 30f;
 
     [SerializeField] GameObject playerMoveObj;
-    BarrierSpawn barrierSpawnScript;
-
-    [SerializeField] GameObject[] barriers;
 
     private void Awake()
     {

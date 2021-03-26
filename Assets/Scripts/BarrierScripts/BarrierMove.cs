@@ -20,37 +20,28 @@ public class BarrierMove : MonoBehaviour
     public bool moveLeftB = false;
 
 
-    //Start (no OnEnable) because we already got random take fromPool. 
-    //And also if onEnable we have bad Awake in BarrierDublicate.cs >
-    // > (take - in x axis position spawn (For now, i don`t know why)
-    //
-
-
-    private void Start() 
-    {
-        randomFloat = Random.Range(0f, 1f);
-        startPos = this.transform.position;
-        repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
-        moveSpeed = Random.Range(minSpeed, maxSpeed);
-
-        /*if (randomFloat > 0.5f) // rotate for "forward" move direction
-        {
-            moveLeftB = true;
-            thisPrefabTransform.transform.Rotate(0, 180, 0); //thisPrefab for rotate dublicate objects too
-        }*/
-    }
 
     private void OnEnable()
     {
         startPos = this.transform.position;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
 
+    private void Start() 
+    {
+        
+        repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
+        moveSpeed = Random.Range(minSpeed, maxSpeed);
+
+        
+    }
+    // Update is called once per frame
+    void Update()
+    {
         Move();
     }
+
+
 
     void Move()
     {

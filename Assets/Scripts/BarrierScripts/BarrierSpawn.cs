@@ -8,12 +8,8 @@ public class BarrierSpawn : MonoBehaviour
     PlayerMove playerMoveScript;
     BarrierDublicate barrierDublicateScript;
     
-    
 
-    [SerializeField] GameObject[] barriers;
-    [SerializeField] GameObject[] ground;
-
-    public float distanceToSpawn = 30f;
+    public float distanceToSpawn = 40f;
     float spawnZPosition;
 
     float randSpawnXRange = 4;
@@ -41,29 +37,40 @@ public class BarrierSpawn : MonoBehaviour
     public void SpawnOneRoad(float spawnPositionZ)
     {
         Vector3 spawnPos = new Vector3(Random.Range(-randSpawnXRange, randSpawnXRange), 0f, spawnPositionZ);
-        int pickedBarrier = Random.Range(0, barriers.Length);
 
-        //Instantiate(barriers[pickedBarrier], spawnPos, Quaternion.identity);
 
-        GameObject barrier = BarrierPool.SharedInstance.GetPooledObject();
-        if (barrier != null)
+
+        //Spawn Road *********************************************************************
+        
+        GameObject roadForCars = BarrierPool.SharedInstance.GetPooledRoadObject();
+        if (roadForCars != null)
         {
-            barrier.transform.position = spawnPos;
             
+            roadForCars.transform.position = spawnPos;
+            roadForCars.transform.rotation = Quaternion.identity;
+            roadForCars.SetActive(true);
+            
+        }
+        
 
-
+        //Spawn Car *******************************************************************
+        GameObject barrierCar = BarrierPool.SharedInstance.GetPooledCarObject();
+        if (barrierCar != null)
+        {
+            barrierCar.transform.position = spawnPos;
+            
             if (rotateBarierForCorrectQueue)
             {
-                barrier.transform.rotation = Quaternion.identity;
+                barrierCar.transform.rotation = Quaternion.identity;
                 rotateBarierForCorrectQueue = false;
             }
             else
             {
-                barrier.transform.rotation = new Quaternion(0, 180, 0, 0);
+                barrierCar.transform.rotation = new Quaternion(0, 180, 0, 0);
                 rotateBarierForCorrectQueue = true;
             }
 
-            barrier.SetActive(true);
+            barrierCar.SetActive(true);
         }
 
     }

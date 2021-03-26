@@ -5,10 +5,13 @@ using UnityEngine;
 public class BarrierPool : MonoBehaviour
 {
     public static BarrierPool SharedInstance;
-    public List<GameObject> pooledObjects;
+    public List<GameObject> pooledCars;
+    public List<GameObject> pooledRoads;
     
-    public GameObject[] barrierToPoolList;
-    public int amountToPool;
+    [SerializeField] GameObject[] barrierCarsToPoolList;
+    [SerializeField] GameObject roadToPoolList; //also we can create list for more variables
+    public int amountCarToPool = 25;
+    public int amountRoadToPool = 10;
 
     BarrierStartSpawn barrierStartSpawn;
 
@@ -19,60 +22,81 @@ public class BarrierPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pooledObjects = new List<GameObject>();
+        //Cars*******************************************************************
+
+        pooledCars = new List<GameObject>();
         GameObject tmp;
         
-        for (int i = 0; i < barrierToPoolList.Length; i++)
+        for (int i = 0; i < barrierCarsToPoolList.Length; i++)
         {
-            for (int b = 0; b < amountToPool; b++)
+            for (int b = 0; b < amountCarToPool; b++)
             {
-                tmp = Instantiate(barrierToPoolList[i]);
+                tmp = Instantiate(barrierCarsToPoolList[i]);
                 tmp.SetActive(false);
-                pooledObjects.Add(tmp);
+                pooledCars.Add(tmp);
             }
         }
 
+        //Roads*******************************************************************
+        pooledRoads = new List<GameObject>();
+        GameObject rtmp;
+
+        for (int i = 0; i < amountRoadToPool; i++)
+        {
+            rtmp = Instantiate(roadToPoolList);
+            rtmp.SetActive(false);
+            pooledRoads.Add(rtmp);
+        }
+
         BarrierStartSpawn.StartGameSpawner.RestartSpawn();
-        
     }
 
-    public GameObject GetPooledObject()
+    public GameObject GetPooledCarObject()
     {
-        int barrierCurrentPool = (amountToPool * barrierToPoolList.Length)-1;
+        int barrierCurrentPool = (amountCarToPool * barrierCarsToPoolList.Length)-1;
         
-
-
         int randomBarrierr = Random.Range(0, barrierCurrentPool);
         bool returnConfirm = false;
 
         while (!returnConfirm)
         {
-            if (!pooledObjects[randomBarrierr].activeInHierarchy)
+            if (!pooledCars[randomBarrierr].activeInHierarchy)
             {
                 returnConfirm = true;
 
-                
-
-                return pooledObjects[randomBarrierr];
-                
+                return pooledCars[randomBarrierr];
             }
             else
             {
                 randomBarrierr = Random.Range(0, barrierCurrentPool);
-                
             }
         }
-
-        
-        
-        //Aslo we can add there other prefabs(if randomBarrier will be active.
 
         return null; //clean road
     }
 
+    public GameObject GetPooledRoadObject()
+    {
+        for (int i = 0; i < amountRoadToPool; i++)
+        {
+            if (!pooledRoads[i].activeInHierarchy)
+            {
+                return pooledRoads[i];
+            }
+        }
+
+        Debug.Log("not enough roads in pool");
+        return null;
+
+    }
+
     public void DeactivateAllPooledObjects()
     {
-        foreach (var item in pooledObjects)
+        foreach (var item in pooledCars)
+        {
+            item.SetActive(false);
+        }
+        foreach (var item in pooledRoads)
         {
             item.SetActive(false);
         }

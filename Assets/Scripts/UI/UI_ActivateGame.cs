@@ -13,7 +13,7 @@ public class UI_ActivateGame : MonoBehaviour
     void Start()
     {
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
-        
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
