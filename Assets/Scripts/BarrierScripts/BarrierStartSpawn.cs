@@ -30,10 +30,10 @@ public class BarrierStartSpawn : MonoBehaviour
     public void RestartSpawn()
     {
         
-        for (int i = 1; i < distanceToMainSpawn/stepDistance + 1; i++)
+        for (int i = 1; i < distanceToMainSpawn/stepDistance; i++) 
         {
             this.gameObject.GetComponent<BarrierSpawn>().SpawnOneRoad(stepDistance * i);
-            Debug.Log($"Start spawn road {i}");
+            
         }
         
 

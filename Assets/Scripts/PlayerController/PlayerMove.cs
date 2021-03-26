@@ -36,11 +36,15 @@ public class PlayerMove : MonoBehaviour
 
         scoreCountScript = GameObject.Find("GameManager").GetComponent<ScoreCount>();
 
-        thisTransform = this.gameObject.GetComponent<Transform>(); //optimization step;
+        
 
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
 
         distanceToSpawn = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierSpawn>().distanceToSpawn;
+    }
+    private void OnEnable()
+    {
+        thisTransform = this.gameObject.GetComponent<Transform>(); //optimization step;
     }
 
     // Update is called once per frame
@@ -48,8 +52,6 @@ public class PlayerMove : MonoBehaviour
     {
 
         CheckIfStatic();
-
-        
 
         if (playerStatic && gameStatusEnum.gameStatus == GameStatus.GameIsActive) //move input
         {
@@ -61,12 +63,10 @@ public class PlayerMove : MonoBehaviour
 
             else if (Input.GetKeyDown(KeyCode.D))
                 MoveRight();
-            
-        }
 
+        }
     }
 
-    
 
     private void MoveRight()
     {

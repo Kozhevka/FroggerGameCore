@@ -33,7 +33,7 @@ public class BarrierPool : MonoBehaviour
         }
 
         BarrierStartSpawn.StartGameSpawner.RestartSpawn();
-        Debug.Log("StartPool");
+        
     }
 
     public GameObject GetPooledObject()
@@ -50,11 +50,16 @@ public class BarrierPool : MonoBehaviour
             if (!pooledObjects[randomBarrierr].activeInHierarchy)
             {
                 returnConfirm = true;
+
+                
+
                 return pooledObjects[randomBarrierr];
+                
             }
             else
             {
                 randomBarrierr = Random.Range(0, barrierCurrentPool);
+                
             }
         }
 

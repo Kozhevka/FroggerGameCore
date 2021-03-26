@@ -16,6 +16,7 @@ public class UI_GameOver : MonoBehaviour
 
     [SerializeField] Transform playerNextPosition;
     [SerializeField] Transform playerCurrentPosition;
+
     
     ScoreCount scoreCount;
 
@@ -39,6 +40,7 @@ public class UI_GameOver : MonoBehaviour
 
         ui_GameIsActive.SetActive(false);
         ui_GameOver.SetActive(true);
+        
 
         gettedScore.text = "Your score: " + scoreCount.Score;
     }

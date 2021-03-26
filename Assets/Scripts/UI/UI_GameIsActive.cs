@@ -19,7 +19,7 @@ public class UI_GameIsActive : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         scoreText.text = "Score: " + scoreCountScript.Score;
     }

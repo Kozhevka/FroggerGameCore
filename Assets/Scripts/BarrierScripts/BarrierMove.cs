@@ -23,10 +23,13 @@ public class BarrierMove : MonoBehaviour
     //Start (no OnEnable) because we already got random take fromPool. 
     //And also if onEnable we have bad Awake in BarrierDublicate.cs >
     // > (take - in x axis position spawn (For now, i don`t know why)
+    //
+
+
     private void Start() 
     {
         randomFloat = Random.Range(0f, 1f);
-        startPos = transform.position;
+        startPos = this.transform.position;
         repeatWight = mainBarrier.GetComponent<BoxCollider>().size.x;
         moveSpeed = Random.Range(minSpeed, maxSpeed);
 
@@ -37,8 +40,13 @@ public class BarrierMove : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        startPos = this.transform.position;
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         Move();
