@@ -23,7 +23,7 @@ public class BarrierDublicate : MonoBehaviour
 
         //dublicate childRoad for barrier  
         GameObject leftBarrier1 = Instantiate(objectSample, leftDublicateSpawnPos, this.transform.rotation);
-        leftBarrier1.transform.parent = this.gameObject.transform;
+        leftBarrier1.transform.parent = objectSample.gameObject.transform;
 
         
     }

@@ -37,7 +37,7 @@ public class BarrierSpawn : MonoBehaviour
     public void SpawnOneRoad(float spawnPositionZ)
     {
         Vector3 spawnPos = new Vector3(Random.Range(-randSpawnXRange, randSpawnXRange), 0f, spawnPositionZ);
-
+        Vector3 spawnRoadBasePos = new Vector3(0f, 0f, spawnPositionZ);
 
 
         //Spawn Road *********************************************************************
@@ -46,7 +46,7 @@ public class BarrierSpawn : MonoBehaviour
         if (roadForCars != null)
         {
             
-            roadForCars.transform.position = spawnPos;
+            roadForCars.transform.position = spawnRoadBasePos;
             roadForCars.transform.rotation = Quaternion.identity;
             roadForCars.SetActive(true);
             

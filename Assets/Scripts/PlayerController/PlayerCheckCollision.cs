@@ -25,8 +25,8 @@ public class PlayerCheckCollision : MonoBehaviour
         
 
         playerManagerObject = GameObject.Find("PlayerManager");
-        playerSkinEnumScript = playerManagerObject.GetComponent<PlayerSkinEnum>();
-        enviromentSkinEnumScript = playerManagerObject.GetComponent<EnviromentSkinEnum>();
+        //playerSkinEnumScript = playerManagerObject.GetComponent<PlayerSkinEnum>();
+        //enviromentSkinEnumScript = playerManagerObject.GetComponent<EnviromentSkinEnum>();
     }
 
     // Update is called once per frame

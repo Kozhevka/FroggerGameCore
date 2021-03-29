@@ -500,36 +500,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134105961}
   m_CullTransparentMesh: 1
---- !u!1 &139883431
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 139883432}
-  m_Layer: 0
-  m_Name: PlayerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &139883432
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139883431}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.38223, y: -23.399958, z: 6.5621347}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165428102
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +851,7 @@ RectTransform:
   - {fileID: 719841166}
   - {fileID: 134105962}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1163,9 +1133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896867db15115f14c8ae8e7126affb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inStartMenu: 0
-  isGameActive: 0
-  GameOver: 0
   gameStatus: 0
 --- !u!4 &350500985
 Transform:
@@ -1253,7 +1220,7 @@ GameObject:
   - component: {fileID: 439474822}
   m_Layer: 0
   m_Name: StartFloor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1698,7 +1665,7 @@ RectTransform:
   - {fileID: 309075828}
   - {fileID: 963100310}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1719,7 +1686,6 @@ GameObject:
   - component: {fileID: 482331257}
   - component: {fileID: 482331260}
   - component: {fileID: 482331261}
-  - component: {fileID: 482331262}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -1832,19 +1798,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &482331262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482331255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c92ba516ff2c6574cafa0f8cb0ef3d03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMoveHolder: {fileID: 577027991}
 --- !u!1 &498828497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +1903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577027992}
   - component: {fileID: 577027993}
+  - component: {fileID: 577027994}
   m_Layer: 0
   m_Name: PlayerNextPosition
   m_TagString: Untagged
@@ -1988,6 +1942,19 @@ MonoBehaviour:
   barrierSpawnObject: {fileID: 1884653093}
   borderOfPlayzone: 10
   playerStatic: 1
+  playerOnBoat: 0
+--- !u!114 &577027994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577027991}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92ba516ff2c6574cafa0f8cb0ef3d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &673919365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,7 +3466,7 @@ RectTransform:
   - {fileID: 69202227}
   - {fileID: 886843128}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

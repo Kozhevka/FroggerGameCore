@@ -17,6 +17,8 @@ public class UI_GameOver : MonoBehaviour
     [SerializeField] Transform playerNextPosition;
     [SerializeField] Transform playerCurrentPosition;
 
+
+    Vector3 startPlayerPosition;
     
     ScoreCount scoreCount;
 
@@ -27,13 +29,10 @@ public class UI_GameOver : MonoBehaviour
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
         scoreCount = GameObject.Find("GameManager").GetComponent<ScoreCount>();
         barrierStartSpawnScript = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierStartSpawn>();
+
+        startPlayerPosition = playerNextPosition.transform.position; //positionAt start
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void GameOver()
     {
         Debug.Log("Game  Over!!!");
@@ -48,18 +47,17 @@ public class UI_GameOver : MonoBehaviour
     public void RestartGame()
     {
         ui_GameOver.SetActive(false);
-        ui_StartMenu.SetActive(true);
+        
         BarrierPool.SharedInstance.DeactivateAllPooledObjects();
 
-        
-        playerNextPosition.transform.position = Vector3.zero;
+        playerNextPosition.transform.position = startPlayerPosition;
+        playerCurrentPosition.transform.position = startPlayerPosition;
+
+        gameStatusEnum.gameStatus = GameStatus.StartMenu;
+        scoreCount.RestartScore();
         barrierStartSpawnScript.RestartSpawn();
 
-        playerCurrentPosition.transform.position = Vector3.zero;
-        
+        ui_StartMenu.SetActive(true);
 
-
-        scoreCount.RestartScore();
-        gameStatusEnum.gameStatus = GameStatus.StartMenu;
     }
 }

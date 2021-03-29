@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] GameObject barrierSpawnObject;
     BarrierSpawn barrierSpawnScript;
 
-    [SerializeField] float borderOfPlayzone;
+    public readonly float borderOfPlayzone = 10f;
 
 
 
@@ -142,6 +142,10 @@ public class PlayerMove : MonoBehaviour
             playerOnBoatScript.enabled = false;
             gameManagerObject.GetComponent<UI_GameOver>().GameOver();
             Debug.Log("No Ground or Boat under legs");
+        }
+        else if(hit.transform == null)
+        {
+            Debug.Log("Raycast CheckGround = null");
         }
         
 
