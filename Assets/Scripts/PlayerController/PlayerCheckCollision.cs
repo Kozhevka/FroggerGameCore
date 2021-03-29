@@ -39,8 +39,7 @@ public class PlayerCheckCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Barrier"))
         {
-            Debug.Log("Game Over!");
-
+            
             gameManagerObject.GetComponent<UI_GameOver>().GameOver();
 
         }

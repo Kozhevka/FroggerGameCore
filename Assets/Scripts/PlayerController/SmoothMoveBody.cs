@@ -8,28 +8,32 @@ public class SmoothMoveBody : MonoBehaviour
     [SerializeField] GameObject playerNextPosition;
     [SerializeField] float smoothnesSpeed;
     bool playerStatic;
+    bool playerOnBoat;
     PlayerMove playerMoveScript;
+
+    
     // Start is called before the first frame update
     void Start()
     {
         PlayerMove playerMoveScript = playerNextPosition.GetComponent<PlayerMove>();
         playerStatic = playerMoveScript.playerStatic;
+        playerOnBoat = playerMoveScript.playerOnBoat;
+        
 
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (!playerStatic)
-            LookToMovePoint();
-
-
-        LookToMovePoint();
-        transform.position = Vector3.MoveTowards(transform.position, playerNextPosition.transform.position, smoothnesSpeed * Time.deltaTime);
+        
+        this.transform.position = Vector3.MoveTowards(this.transform.position, playerNextPosition.transform.position, smoothnesSpeed * Time.deltaTime);
     }
 
-    private void LookToMovePoint()
+    public void LookAtDirection(Vector3 lookAt)
     {
-        transform.LookAt(playerNextPosition.transform.position);
+        
+        this.transform.rotation = Quaternion.Euler(0, lookAt.y, 0);
+        Debug.Log(lookAt);
+        
     }
 }

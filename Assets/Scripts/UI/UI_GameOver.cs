@@ -36,6 +36,7 @@ public class UI_GameOver : MonoBehaviour
     }
     public void GameOver()
     {
+        Debug.Log("Game  Over!!!");
         gameStatusEnum.gameStatus = GameStatus.GameOver;
 
         ui_GameIsActive.SetActive(false);

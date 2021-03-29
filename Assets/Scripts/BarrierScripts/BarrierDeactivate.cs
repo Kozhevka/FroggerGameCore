@@ -21,7 +21,7 @@ public class BarrierDeactivate : MonoBehaviour
             || this.transform.position.z > (player.position.z + spawnPos - 1f))
         {
             gameObject.SetActive(false);
-            Debug.Log("deactivate object");
+            
         }
 
     }

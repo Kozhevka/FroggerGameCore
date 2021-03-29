@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameStatusEnum : MonoBehaviour
 {
-    [Header("Check game status in inspector")] //remove this and update when BUILD 
+    /*[Header("Check game status in inspector")] //remove this and update when BUILD 
     [SerializeField] bool inStartMenu;
     [SerializeField] bool isGameActive;
-    [SerializeField] bool GameOver;
+    [SerializeField] bool GameOver;*/
 
     public enum GameStatus
     {
@@ -25,7 +25,7 @@ public class GameStatusEnum : MonoBehaviour
         gameStatus = GameStatus.StartMenu;
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (gameStatus == GameStatus.StartMenu)
         {
@@ -45,7 +45,7 @@ public class GameStatusEnum : MonoBehaviour
             isGameActive = false;
             GameOver = true;
         }
-    }
+    }*/
 
     /*public GameStatus ChangeGameStatus (GameStatus setGameStatus)
     {

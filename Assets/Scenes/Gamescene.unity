@@ -1291,7 +1291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5677de14c2b249c46b685101731fe502, type: 2}
+  - {fileID: 2100000, guid: 3de2f9b8c7774f04dbcd6d2fe1d2f03c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1719,6 +1719,7 @@ GameObject:
   - component: {fileID: 482331257}
   - component: {fileID: 482331260}
   - component: {fileID: 482331261}
+  - component: {fileID: 482331262}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -1831,6 +1832,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &482331262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482331255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92ba516ff2c6574cafa0f8cb0ef3d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoveHolder: {fileID: 577027991}
 --- !u!1 &498828497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,10 +4138,10 @@ MonoBehaviour:
   pooledCars: []
   pooledRoads: []
   barrierCarsToPoolList:
-  - {fileID: 294370413089123641, guid: 5bf0e98192a38f0489e1c3b76b3bf71f, type: 3}
-  - {fileID: 5479037124664945681, guid: 5bcd9268c266b944ea4c9be1be39a963, type: 3}
-  - {fileID: 8110735058388948545, guid: dce5c37e4c9bece40ab37dc9e92a1fda, type: 3}
-  roadToPoolList: {fileID: 7121868281827831176, guid: 54f10d7bdcc88cd449e0ecc8bc7ef3e7, type: 3}
+  - {fileID: 5359148669492694827, guid: abad5c7463089f947883cfca695fd4a5, type: 3}
+  - {fileID: 5359148669492694827, guid: abad5c7463089f947883cfca695fd4a5, type: 3}
+  - {fileID: 5359148669492694827, guid: abad5c7463089f947883cfca695fd4a5, type: 3}
+  roadToPoolList: {fileID: 5021897545603764330, guid: ed1ce0b82f53a7c44ad4f142e5314b6c, type: 3}
   amountCarToPool: 25
   amountRoadToPool: 18
 --- !u!114 &1884653097
