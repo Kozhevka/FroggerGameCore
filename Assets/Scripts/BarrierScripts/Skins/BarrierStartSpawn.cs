@@ -30,7 +30,7 @@ public class BarrierStartSpawn : MonoBehaviour
     public void RestartSpawn()
     {
         Debug.Log("RestartSpawn");
-        for (int i = 1; i < stepsToSpawn; i++) 
+        for (int i = 1; i < stepsToSpawn + 1; i++) 
         {
             Debug.Log("Try to respawn start " + i);
             spawnRoadManager.SpawnOneRoad(stepDistance * i);

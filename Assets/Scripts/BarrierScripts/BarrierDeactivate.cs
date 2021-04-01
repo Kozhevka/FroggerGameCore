@@ -25,8 +25,7 @@ public class BarrierDeactivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((player.position.z - stepDistance) > this.transform.position.z
-            || this.transform.position.z > (player.position.z + distanceForwardPlayer))
+        if ((player.position.z - stepDistance) > this.transform.position.z) //|| this.transform.position.z > (player.position.z + distanceForwardPlayer))
         {
             gameObject.SetActive(false);
             
