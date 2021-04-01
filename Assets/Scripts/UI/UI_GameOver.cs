@@ -35,7 +35,7 @@ public class UI_GameOver : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game  Over!!!");
+        //Debug.Log("Game  Over!!!");
         gameStatusEnum.gameStatus = GameStatus.GameOver;
 
         ui_GameIsActive.SetActive(false);
@@ -48,7 +48,7 @@ public class UI_GameOver : MonoBehaviour
     {
         ui_GameOver.SetActive(false);
         
-        BarrierPool.SharedInstance.DeactivateAllPooledObjects();
+        //RoadPool.RoadPoolScript.DeactivateAllPooledRoads();
 
         playerNextPosition.transform.position = startPlayerPosition;
         playerCurrentPosition.transform.position = startPlayerPosition;

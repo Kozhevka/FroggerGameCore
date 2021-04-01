@@ -33,7 +33,7 @@ public class SmoothMoveBody : MonoBehaviour
     {
         
         this.transform.rotation = Quaternion.Euler(0, lookAt.y, 0);
-        Debug.Log(lookAt);
+        
         
     }
 }

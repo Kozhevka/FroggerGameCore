@@ -9,6 +9,8 @@ public class UI_ActivateGame : MonoBehaviour
 
     [SerializeField] GameObject ui_StartMenu;
     [SerializeField] GameObject ui_IsGameActive;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,9 @@ public class UI_ActivateGame : MonoBehaviour
     public void StartGame()
     {
         gameStatusEnum.gameStatus = GameStatus.GameIsActive;
+
+
+        
 
         ui_StartMenu.SetActive(false);
         ui_IsGameActive.SetActive(true);

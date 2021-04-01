@@ -16,7 +16,7 @@ public class PlayerCheckCollision : MonoBehaviour
     GameObject playerManagerObject;
 
     PlayerSkinEnum playerSkinEnumScript;
-    EnviromentSkinEnum enviromentSkinEnumScript;
+    //EnviromentSkinEnum enviromentSkinEnumScript;
     // Start is called before the first frame update
     void Start()
     {

@@ -11,9 +11,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] Transform playerBody;
     private Vector3 velocity = Vector3.zero;
     ScoreCount scoreCountScript;
+    GameManagerMain mainGameManagerScript;
 
-    [SerializeField] GameObject barrierSpawnObject;
-    BarrierSpawn barrierSpawnScript;
+    //[SerializeField] GameObject barrierSpawnObject;
+
 
     public readonly float borderOfPlayzone = 10f;
 
@@ -38,18 +39,18 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        barrierSpawnScript = barrierSpawnObject.GetComponent<BarrierSpawn>();
+       
 
         gameManagerObject = GameObject.Find("GameManager");
 
-        scoreCountScript = gameManagerObject.GetComponent<ScoreCount>();
+        mainGameManagerScript = gameManagerObject.GetComponent<GameManagerMain>();
+
+        
 
         gameStatusEnum = gameManagerObject.GetComponent<GameStatusEnum>();
 
         smoothMoveBodyScript = playerBody.GetComponent<SmoothMoveBody>();
         
-
-        distanceToSpawn = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierSpawn>().distanceToSpawn;
 
         playerOnBoatScript = this.gameObject.GetComponent<PlayerOnBoat>();
 
@@ -113,8 +114,8 @@ public class PlayerMove : MonoBehaviour
 
         if (forwardMove)
         {
-            barrierSpawnScript.SpawnOneRoad(thisTransform.position.z + distanceToSpawn - stepDistance);
-            scoreCountScript.OneStepScore();
+            mainGameManagerScript.PlayerMadeStepForward(thisTransform.position.z);
+
         }
 
         RaycastCheckGround();
@@ -140,7 +141,7 @@ public class PlayerMove : MonoBehaviour
         else if(hit.transform.tag != "Ground")
         {
             playerOnBoatScript.enabled = false;
-            gameManagerObject.GetComponent<UI_GameOver>().GameOver();
+            //gameManagerObject.GetComponent<UI_GameOver>().GameOver();
             Debug.Log("No Ground or Boat under legs");
         }
         else if(hit.transform == null)

@@ -6,19 +6,27 @@ public class BarrierDeactivate : MonoBehaviour
 {
     Transform player;
     float barrier = 4f;
-    float spawnPos;
+    float stepsToSpawn;
+    float stepDistance;
+
+    float distanceForwardPlayer;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("PlayerNextPosition").transform;
-        spawnPos = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierSpawn>().distanceToSpawn;
+        stepDistance = GameObject.Find("PlayerNextPosition").GetComponent<PlayerMove>().stepDistance;
+        stepsToSpawn = BarrierValueHolder.barrierValueHolder.stepsToSpawn;
+
+        distanceForwardPlayer = (stepsToSpawn * stepDistance) - 1f;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((player.position.z - barrier) > this.transform.position.z
-            || this.transform.position.z > (player.position.z + spawnPos - 1f))
+        if ((player.position.z - stepDistance) > this.transform.position.z
+            || this.transform.position.z > (player.position.z + distanceForwardPlayer))
         {
             gameObject.SetActive(false);
             
