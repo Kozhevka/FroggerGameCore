@@ -17,7 +17,7 @@ public class BarrierDeactivate : MonoBehaviour
         stepDistance = GameObject.Find("PlayerNextPosition").GetComponent<PlayerMove>().stepDistance;
         stepsToSpawn = BarrierValueHolder.barrierValueHolder.stepsToSpawn;
 
-        distanceForwardPlayer = (stepsToSpawn * stepDistance) - 1f;
+        distanceForwardPlayer = (stepsToSpawn * stepDistance);// - 1f;
 
 
     }
@@ -25,7 +25,8 @@ public class BarrierDeactivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((player.position.z - stepDistance) > this.transform.position.z) //|| this.transform.position.z > (player.position.z + distanceForwardPlayer))
+        if (((player.position.z - stepDistance) > this.transform.position.z) 
+            || (this.transform.position.z > (player.position.z + distanceForwardPlayer)))
         {
             gameObject.SetActive(false);
             

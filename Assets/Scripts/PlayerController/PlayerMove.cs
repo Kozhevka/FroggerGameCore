@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
 
     public readonly float borderOfPlayzone = 10f;
 
-
+    
 
     private Transform thisTransform;
 
@@ -81,14 +81,14 @@ public class PlayerMove : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.A)) //else for disable diogonale move
                 {
                     smoothMoveBodyScript.LookAtDirection(new Vector3(0, -90, 0));
-                    MovePlayer(-stepDistance, 0, false);
+                    MovePlayer(-stepDistance/2, 0, false);
                 }
                     
 
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
                     smoothMoveBodyScript.LookAtDirection(new Vector3(0, 90, 0));
-                    MovePlayer(stepDistance, 0, false);
+                    MovePlayer(stepDistance/2, 0, false);
                 }
                     
 
@@ -138,17 +138,26 @@ public class PlayerMove : MonoBehaviour
             playerOnBoatScript.enabled = true;
             playerOnBoatScript.NeedCheckGround(hit.transform.gameObject, positionOnBoatXAxis);
         }
-        else if(hit.transform.tag != "Ground")
+        else if(hit.transform.tag == "Road")
         {
             playerOnBoatScript.enabled = false;
             //gameManagerObject.GetComponent<UI_GameOver>().GameOver();
-            Debug.Log("No Ground or Boat under legs");
+            //Debug.Log("Road");
         }
-        else if(hit.transform == null)
+        else if (hit.transform.tag == "Tree")
         {
-            Debug.Log("Raycast CheckGround = null");
+            playerOnBoatScript.enabled = false;
+            //gameManagerObject.GetComponent<UI_GameOver>().GameOver();
+            //Debug.Log("Tree");
         }
-        
+        else if (hit.transform.tag == "Water")
+        {
+            playerOnBoatScript.enabled = false;
+            gameManagerObject.GetComponent<UI_GameOver>().GameOver();
+            //Debug.Log("Water");
+        }
+
+
 
     }
 

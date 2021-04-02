@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarrierStartSpawn : MonoBehaviour
 {
-    
+    public static BarrierStartSpawn barrierStartSpawn;
     float stepDistance;
     int stepsToSpawn;
 
@@ -13,7 +13,12 @@ public class BarrierStartSpawn : MonoBehaviour
     SpawnRoadManager spawnRoadManager;
 
     int frameCounter = 0;
-    
+
+
+    private void Awake()
+    {
+        barrierStartSpawn = this;
+    }
 
     void Start()
     {

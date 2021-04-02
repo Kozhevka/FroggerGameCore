@@ -20,39 +20,45 @@ public class MovingObjectsSpawn : MonoBehaviour
     float waitTimeToNextSpawn = 0;
     float seconds;
 
+    bool didThatAStatic = false;
+    
+
+    private void Awake()
+    {
+        movingObjectsPoolScript = poolOfObjects.GetComponent<MovingObjectsPool>();
+        speedOfthisRoad = Random.Range(minAndMaxSpeed.x, minAndMaxSpeed.y);
+    }
 
     public void OnEnableSpawn()
     {
-        speedOfthisRoad = Random.Range(minAndMaxSpeed.x, minAndMaxSpeed.y);
+
         //Debug.Log($"Speed of this road = {speedOfthisRoad}");
-        // shoose type of Car
+
 
 
         for (int i = 0; i < onEnableSpawnPoints.Length; i++)
         {
-            int random = Random.Range(0, 1);
+            int random = Random.Range(0, 2);
 
-            if(random==0)
+            if (random == 0)
             {
                 typeOfNextCar = PickNextCarAlgotytm();
 
                 SpawnOneObject(onEnableSpawnPoints[i].transform.position, typeOfNextCar);
             }
-            
+
         }
         StartCoroutine(SpawnNextCar(waitTimeToNextSpawn));
     }
 
-    private void Awake()
-    {
-        movingObjectsPoolScript = poolOfObjects.GetComponent<MovingObjectsPool>();
-    }
-
-
     void RepeatingSpawn()
     {
-        SpawnOneObject(repeatSpawnPoint.position, typeOfNextCar);
-        StartCoroutine(SpawnNextCar(waitTimeToNextSpawn));
+        if (!didThatAStatic)
+        {
+            typeOfNextCar = PickNextCarAlgotytm();
+            SpawnOneObject(repeatSpawnPoint.position, typeOfNextCar);
+            StartCoroutine(SpawnNextCar(waitTimeToNextSpawn));
+        }
     }
 
     IEnumerator SpawnNextCar(float seconds)
@@ -62,7 +68,7 @@ public class MovingObjectsSpawn : MonoBehaviour
         RepeatingSpawn();
     }
 
-    int PickNextCarAlgotytm()
+    int PickNextCarAlgotytm() // shoose type of Car
     {
         
         int random = Random.Range(1, 10);
@@ -99,7 +105,19 @@ public class MovingObjectsSpawn : MonoBehaviour
 
             //barrierCar.transform.rotation = Quaternion.identity;
 
-            barrierCar.GetComponent<BarrierMove>().moveSpeed = speedOfthisRoad;
+            if (barrierCar.TryGetComponent<BarrierMove>(out var barrierCarScript))
+                {
+                barrierCarScript.moveSpeed = speedOfthisRoad;
+                
+                
+                //Debug.Log("Barrier move gotten");
+                }
+            else
+            {
+                //Debug.Log("Barrier move is static");
+                didThatAStatic = true;
+            }
+
             
             barrierCar.SetActive(true);
         }

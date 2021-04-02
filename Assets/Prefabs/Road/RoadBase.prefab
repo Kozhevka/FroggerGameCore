@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 4324492269377724089}
   m_Layer: 0
   m_Name: Road Base
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,7 +547,7 @@ MonoBehaviour:
   - {fileID: 1485203029432399747}
   - {fileID: 605629690424486990}
   poolOfObjects: {fileID: 7121868281827831176}
-  minAndMaxSpeed: {x: 1, y: 3}
+  minAndMaxSpeed: {x: 2, y: 3.5}
 --- !u!1 &7672193931715136193
 GameObject:
   m_ObjectHideFlags: 0

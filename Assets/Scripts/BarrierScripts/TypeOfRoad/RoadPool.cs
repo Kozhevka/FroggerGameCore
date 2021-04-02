@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoadPool : MonoBehaviour
 {
     
-    List<GameObject> pooledCars;
+    
     List<GameObject> pooledRoads;
     
     //[SerializeField] GameObject[] barrierCarsToPoolList;
@@ -55,12 +55,8 @@ public class RoadPool : MonoBehaviour
 
     }
 
-    public void DeactivateAllPooledRoads()
+    public void DeactivatePooledRoads()
     {
-        foreach (var item in pooledCars)
-        {
-            item.SetActive(false);
-        }
         foreach (var item in pooledRoads)
         {
             item.SetActive(false);

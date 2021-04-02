@@ -7,6 +7,9 @@ TagManager:
   - Barrier
   - Boat
   - Ground
+  - Water
+  - Road
+  - Tree
   layers:
   - Default
   - TransparentFX

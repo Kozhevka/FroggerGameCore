@@ -18,7 +18,7 @@ public class MovingObjectsPool : MonoBehaviour
     [SerializeField] GameObject bigObject;
 
 
-     int amountObjectsToPool = 10;
+     int amountObjectsToPool = 5;
 
     
 

@@ -391,9 +391,9 @@ MonoBehaviour:
   pooledSmallObj: []
   pooledMediumObj: []
   pooledBigObj: []
-  smallObject: {fileID: 6310955249251394023, guid: 654fbbd842d2af14aa6b1e95ed1a9d26, type: 3}
-  mediumObject: {fileID: 4495311167009806276, guid: 877121d2ef31a6448b80169c9413b04a, type: 3}
-  bigObject: {fileID: 1958737803766951856, guid: 48ddc5090a8f1bb4dae92ce4a68d1698, type: 3}
+  smallObject: {fileID: 6310955249251394023, guid: b599d6e690e4fc14cb8f67d363225321, type: 3}
+  mediumObject: {fileID: 4495311167009806276, guid: a0ad517596d639d488e2650b4d307885, type: 3}
+  bigObject: {fileID: 1958737803766951856, guid: a6d487f9d375a4743894dbf279314919, type: 3}
 --- !u!114 &2437160132213462529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
   - {fileID: 8074993810706837569}
   - {fileID: 1467557548591697826}
   poolOfObjects: {fileID: 5021897545603764330}
-  minAndMaxSpeed: {x: 1, y: 3}
+  minAndMaxSpeed: {x: 2, y: 3.5}
 --- !u!1 &8180532700101646746
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 3511811893487091723}
   m_Layer: 0
   m_Name: Road Base
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

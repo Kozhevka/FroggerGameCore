@@ -37,7 +37,7 @@ public class BarrierMove : MonoBehaviour
         if (this.transform.position.x > sumOfDisableDistance 
             || this.transform.position.x < -sumOfDisableDistance)
                 {
-            this.gameObject.SetActive(false);
+                    this.gameObject.SetActive(false);
                 }
 
     }

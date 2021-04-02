@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrierValueHolder : MonoBehaviour
 {
     public static BarrierValueHolder barrierValueHolder;
-    public int stepsToSpawn;
+    [SerializeField] public int stepsToSpawn = 15;
 
     public float playerMoveBarriers { get; private set; }
 

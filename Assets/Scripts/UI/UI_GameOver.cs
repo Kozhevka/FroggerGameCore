@@ -14,6 +14,9 @@ public class UI_GameOver : MonoBehaviour
     [SerializeField] GameObject ui_GameOver;
     [SerializeField] GameObject ui_StartMenu;
 
+    
+    GameManagerMain mainGameManagerScript;
+
     [SerializeField] Transform playerNextPosition;
     [SerializeField] Transform playerCurrentPosition;
 
@@ -31,6 +34,9 @@ public class UI_GameOver : MonoBehaviour
         barrierStartSpawnScript = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierStartSpawn>();
 
         startPlayerPosition = playerNextPosition.transform.position; //positionAt start
+
+        
+        mainGameManagerScript = this.gameObject.GetComponent<GameManagerMain>();
     }
 
     public void GameOver()
@@ -47,15 +53,11 @@ public class UI_GameOver : MonoBehaviour
     public void RestartGame()
     {
         ui_GameOver.SetActive(false);
-        
+
+        mainGameManagerScript.RestartGame();
         //RoadPool.RoadPoolScript.DeactivateAllPooledRoads();
 
-        playerNextPosition.transform.position = startPlayerPosition;
-        playerCurrentPosition.transform.position = startPlayerPosition;
-
-        gameStatusEnum.gameStatus = GameStatus.StartMenu;
-        scoreCount.RestartScore();
-        barrierStartSpawnScript.RestartSpawn();
+        
 
         ui_StartMenu.SetActive(true);
 
