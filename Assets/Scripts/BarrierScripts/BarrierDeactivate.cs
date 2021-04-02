@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrierDeactivate : MonoBehaviour
 {
     Transform player;
-    float barrier = 4f;
+    
     float stepsToSpawn;
     float stepDistance;
 

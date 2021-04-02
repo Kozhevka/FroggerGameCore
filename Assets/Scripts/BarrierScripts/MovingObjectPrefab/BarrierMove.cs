@@ -8,7 +8,7 @@ public class BarrierMove : MonoBehaviour
     public float moveSpeed;
 
     float borderOfPlayzone;
-    [SerializeField] float disableDistanceFromBorder = 5f;
+    float disableDistanceFromBorder = 10f;
     float sumOfDisableDistance;
     
 

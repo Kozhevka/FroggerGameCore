@@ -32,7 +32,7 @@ public class GameManagerMain : MonoBehaviour
     }
     public void PlayerMadeStepForward(float vectorZposition) //We get current PlayerZPosition;
     {
-        Debug.Log($"desitance to spawn = {stepsToSpawn}");
+        //Debug.Log($"desitance to spawn = {stepsToSpawn}");
         //Debug.Log(" PlayerMadeStepForward " +vectorZposition);
         float nextZSpawnPosition = vectorZposition + (stepsToSpawn*stepDistance);
 

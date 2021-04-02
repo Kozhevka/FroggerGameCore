@@ -538,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbfb1e9d5391bd49b552263408e01d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatSpawnPoint: {fileID: 1669979929937586814}
   onEnableSpawnPoints:
   - {fileID: 2043057312015243210}
   - {fileID: 5382381295267275076}

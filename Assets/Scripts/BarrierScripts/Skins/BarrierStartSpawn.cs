@@ -11,8 +11,8 @@ public class BarrierStartSpawn : MonoBehaviour
     [SerializeField] GameObject playerMoveObj;
 
     SpawnRoadManager spawnRoadManager;
-    
 
+    int frameCounter = 0;
     
 
     void Start()
@@ -25,14 +25,23 @@ public class BarrierStartSpawn : MonoBehaviour
 
         
     }
-
+    private void Update()
+    {
+        if (frameCounter == 0)
+            frameCounter++;
+        if (frameCounter == 1)
+        {
+            RestartSpawn();
+            frameCounter++;
+        }
+    }
 
     public void RestartSpawn()
     {
-        Debug.Log("RestartSpawn");
+        //Debug.Log("RestartSpawn");
         for (int i = 1; i < stepsToSpawn + 1; i++) 
         {
-            Debug.Log("Try to respawn start " + i);
+            //Debug.Log("Try to respawn start " + i);
             spawnRoadManager.SpawnOneRoad(stepDistance * i);
             
         }

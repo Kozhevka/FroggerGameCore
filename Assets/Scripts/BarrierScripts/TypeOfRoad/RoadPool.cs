@@ -34,7 +34,7 @@ public class RoadPool : MonoBehaviour
             pooledRoads.Add(rtmp);
         }
 
-        //skinHolder.GetComponent<BarrierStartSpawn>().RestartSpawn();
+        
     }
 
     

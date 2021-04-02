@@ -32,18 +32,14 @@ public class SpawnRoadManager : MonoBehaviour
 
     public void SpawnOneRoad(float spawnZPosition)
     {
-        //Debug.Log($"Try to spawn road at: {spawnZPosition}");
+        Debug.Log($"Try to spawn road at: {spawnZPosition}");
 
         Vector3 spawnPos = new Vector3(0f, 0f, spawnZPosition);
         //Debug.Log($"Spawn one road *spawnPos* = {spawnPos}");
 
 
-        int currentTypeOfRoad = typeOfRoadInt;
-        //Debug.Log($"Spawn one road *currentTypeOfRoad* = {currentTypeOfRoad}");
-
-
-        typeOfRoadInt = pickRoadTypeScript.GetRoadType(currentTypeOfRoad);
-
+        
+        //Debug.Log($"Next type of road = {typeOfRoadInt}");
 
         if(typeOfRoadInt == 0)
         {
@@ -56,7 +52,7 @@ public class SpawnRoadManager : MonoBehaviour
                 Debug.Log("road = null");
 
         }
-        else if (typeOfRoadInt == 1)
+        else if (typeOfRoadInt == 2)
         {
             GameObject river = riverPoolScript.GetPooledRoadObject();
             if (river != null)
@@ -66,7 +62,7 @@ public class SpawnRoadManager : MonoBehaviour
             else if (river == null)
                 Debug.Log("river = null");
         }
-        else if (typeOfRoadInt == 2) 
+        else if (typeOfRoadInt == 1) 
         {
             GameObject tree = treePoolScript.GetPooledRoadObject();
             if (tree != null)
@@ -76,7 +72,12 @@ public class SpawnRoadManager : MonoBehaviour
             else if (tree == null)
                 Debug.Log("tree = null");
         }
-        
+        int currentTypeOfRoad = typeOfRoadInt;
+        //Debug.Log($"Spawn one road *currentTypeOfRoad* = {currentTypeOfRoad}");
+
+
+        typeOfRoadInt = pickRoadTypeScript.GetRoadType(currentTypeOfRoad); //get next type of road
+
     }
 
     void PositionRotationActivate(GameObject takenGameObj, Vector3 spawnPos)
@@ -92,9 +93,11 @@ public class SpawnRoadManager : MonoBehaviour
             takenGameObj.transform.rotation = Quaternion.Euler(0, 180, 0);
             rotateForDirectionQueue = false;
         }
-        takenGameObj.SetActive(true);
 
+        takenGameObj.SetActive(true);
         takenGameObj.GetComponent<MovingObjectsSpawn>().OnEnableSpawn();
+
+        
     }
 
 

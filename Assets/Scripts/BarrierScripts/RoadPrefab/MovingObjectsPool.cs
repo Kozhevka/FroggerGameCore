@@ -33,6 +33,7 @@ public class MovingObjectsPool : MonoBehaviour
         {
             
             poolSO = Instantiate(smallObject);
+            TransformParendAndRotation(poolSO.transform);
             poolSO.SetActive(false);
             pooledSmallObj.Add(poolSO);
         }
@@ -45,6 +46,7 @@ public class MovingObjectsPool : MonoBehaviour
         {
 
             poolMO = Instantiate(mediumObject);
+            TransformParendAndRotation(poolMO.transform);
             poolMO.SetActive(false);
             pooledMediumObj.Add(poolMO);
         }
@@ -57,10 +59,18 @@ public class MovingObjectsPool : MonoBehaviour
         {
 
             poolBO = Instantiate(bigObject);
+            TransformParendAndRotation(poolBO.transform);
             poolBO.SetActive(false);
             pooledBigObj.Add(poolBO);
         }
 
+        
+    }
+
+    void TransformParendAndRotation(Transform gameObj)
+    {
+        gameObj.transform.parent = this.gameObject.transform;
+        gameObj.transform.rotation = Quaternion.identity;
         
     }
 
