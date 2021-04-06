@@ -26,16 +26,21 @@ public class UI_GameOver : MonoBehaviour
     ScoreCount scoreCount;
 
     BarrierStartSpawn barrierStartSpawnScript;
+
+    //PlayerData***********************************************************************
+
+    MainData mainDataScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        mainDataScript = GameObject.Find("PlayerData").GetComponent<MainData>();
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
         scoreCount = GameObject.Find("GameManager").GetComponent<ScoreCount>();
         barrierStartSpawnScript = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierStartSpawn>();
 
         startPlayerPosition = playerNextPosition.transform.position; //positionAt start
 
-        
         mainGameManagerScript = this.gameObject.GetComponent<GameManagerMain>();
     }
 
@@ -43,7 +48,7 @@ public class UI_GameOver : MonoBehaviour
     {
         //Debug.Log("Game  Over!!!");
         gameStatusEnum.gameStatus = GameStatus.GameOver;
-
+        mainDataScript.UpdateBalance((int)scoreCount.Score);
         ui_GameIsActive.SetActive(false);
         ui_GameOver.SetActive(true);
         

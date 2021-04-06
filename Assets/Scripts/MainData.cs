@@ -7,7 +7,7 @@ public class MainData : MonoBehaviour
 
     
     public int Balance { get; private set; }
-
+    [SerializeField] int balance;
     
 
 
@@ -30,20 +30,22 @@ public class MainData : MonoBehaviour
         {
             boughtEnviroment.Add(false);
         }
+        boughtSkins[0] = true;      //
+        boughtEnviroment[0] = true; //Default skins
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       // balance = Balance;
     }
 
-    void UpdateBalance(int gottedScore)
+    public void UpdateBalance(int gottedScore)
     {
         Balance += gottedScore;
     }
 
-    void BuySkin(int skinNumber)
+    public void BuySkin(int skinNumber)
     {
         if(!boughtSkins[skinNumber])
         {
@@ -63,7 +65,7 @@ public class MainData : MonoBehaviour
         
     }
 
-    void BuyEnviroment(int envNumber)
+    public void BuyEnviroment(int envNumber)
     {
         if (!boughtEnviroment[envNumber])
         {
