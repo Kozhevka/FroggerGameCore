@@ -8,7 +8,7 @@ public class BarrierStartSpawn : MonoBehaviour
     float stepDistance;
     int stepsToSpawn;
 
-    [SerializeField] GameObject playerMoveObj;
+    GameObject playerMoveObj;
 
     SpawnRoadManager spawnRoadManager;
 
@@ -22,6 +22,8 @@ public class BarrierStartSpawn : MonoBehaviour
 
     void Start()
     {
+        playerMoveObj = GameObject.Find("PlayerNextPosition");
+
         stepDistance = playerMoveObj.GetComponent<PlayerMove>().stepDistance;
 
         stepsToSpawn = BarrierValueHolder.barrierValueHolder.stepsToSpawn;

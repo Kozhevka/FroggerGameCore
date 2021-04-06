@@ -9,7 +9,7 @@ public class GameManagerMain : MonoBehaviour
 
     ScoreCount scoreCountScript;
 
-    [SerializeField] GameObject mainSpawnManager;
+    
     SpawnRoadManager spawnRoadManager;
     BarrierValueHolder barrierValueHolder;
 
@@ -35,7 +35,7 @@ public class GameManagerMain : MonoBehaviour
         scoreCountScript = this.gameObject.GetComponent<ScoreCount>();
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
 
-        spawnRoadManager = mainSpawnManager.GetComponent<SpawnRoadManager>();
+        spawnRoadManager = GameObject.Find("SkinShell").GetComponent<SpawnRoadManager>();
 
         stepsToSpawn = BarrierValueHolder.barrierValueHolder.stepsToSpawn;
 
