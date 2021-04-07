@@ -77,6 +77,7 @@ public class MovingObjectsPool : MonoBehaviour
     public GameObject GetPooledObject(int arrayInt) //0-small 1-medium 2-big
     {
         //Debug.Log($"Try to GetOPooledObject = {arrayInt}");
+        
         if (arrayInt == 0)
         {
             

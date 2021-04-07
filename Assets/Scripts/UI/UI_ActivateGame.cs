@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static GameStatusEnum;
 
@@ -11,11 +12,19 @@ public class UI_ActivateGame : MonoBehaviour
     [SerializeField] GameObject ui_IsGameActive;
 
     
+
+    
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        
+
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
         Application.targetFrameRate = 60;
+
+       
     }
 
     // Update is called once per frame
@@ -28,7 +37,7 @@ public class UI_ActivateGame : MonoBehaviour
     {
         gameStatusEnum.gameStatus = GameStatus.GameIsActive;
 
-
+        
         
 
         ui_StartMenu.SetActive(false);

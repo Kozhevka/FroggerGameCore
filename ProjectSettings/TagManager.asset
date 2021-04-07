@@ -10,6 +10,7 @@ TagManager:
   - Water
   - Road
   - Tree
+  - SkinShell
   layers:
   - Default
   - TransparentFX

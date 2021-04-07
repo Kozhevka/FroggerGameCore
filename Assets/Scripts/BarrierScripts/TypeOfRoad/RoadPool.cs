@@ -8,9 +8,8 @@ public class RoadPool : MonoBehaviour
     
     List<GameObject> pooledRoads;
     
-    //[SerializeField] GameObject[] barrierCarsToPoolList;
-    [SerializeField] GameObject roadToPoolList; //also we can create list for more variables
-    //public int amountCarToPool = 25;
+    [SerializeField] GameObject roadToPoolList;
+    
     public int amountRoadToPool = 10;
 
     [SerializeField] GameObject skinHolder;
@@ -18,7 +17,7 @@ public class RoadPool : MonoBehaviour
    
     
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
 
         
@@ -60,6 +59,14 @@ public class RoadPool : MonoBehaviour
         foreach (var item in pooledRoads)
         {
             item.SetActive(false);
+        }
+    }
+
+    public void DeletePool()
+    {
+        foreach (var item in pooledRoads)
+        {
+            Destroy(item);
         }
     }
 }

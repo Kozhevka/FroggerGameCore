@@ -122,6 +122,6 @@ public class MovingObjectsSpawn : MonoBehaviour
             barrierCar.SetActive(true);
         }
         if (barrierCar == null)
-            Debug.Log("Spawn one object NUll");
+            Debug.Log("Spawn one object NULL");
     }
 }

@@ -17,7 +17,10 @@ public class BarrierStartSpawn : MonoBehaviour
 
     private void Awake()
     {
-        barrierStartSpawn = this;
+        //barrierStartSpawn = this;
+
+        //ResetFrame counter for swiping skins
+        frameCounter = 0;
     }
 
     void Start()
@@ -27,8 +30,6 @@ public class BarrierStartSpawn : MonoBehaviour
         stepDistance = playerMoveObj.GetComponent<PlayerMove>().stepDistance;
 
         stepsToSpawn = BarrierValueHolder.barrierValueHolder.stepsToSpawn;
-
-        spawnRoadManager = this.gameObject.GetComponent<SpawnRoadManager>();
 
         
     }
@@ -45,6 +46,7 @@ public class BarrierStartSpawn : MonoBehaviour
 
     public void RestartSpawn()
     {
+        spawnRoadManager = GameObject.Find("SkinShell").GetComponent<SpawnRoadManager>();
         //Debug.Log("RestartSpawn");
         for (int i = 1; i < stepsToSpawn + 1; i++) 
         {

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7517422670899078798}
+  - component: {fileID: 4282641804123401699}
   m_Layer: 0
   m_Name: EnvSkin2
   m_TagString: Untagged
@@ -31,6 +32,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4282641804123401699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175142796107709515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f90fff1739ce845a399d3f1a171f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadPoolLists:
+  - {fileID: 8222753400681372863}
+  - {fileID: 8222753400544296199}
+  - {fileID: 8222753400865797253}
 --- !u!1 &8222753400544296199
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532c94b289a90fc428226190ff10efaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveObj: {fileID: 0}
 --- !u!114 &8222753400690691669
 MonoBehaviour:
   m_ObjectHideFlags: 0

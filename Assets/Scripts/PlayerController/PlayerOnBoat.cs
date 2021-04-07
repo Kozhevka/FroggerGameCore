@@ -25,7 +25,7 @@ public class PlayerOnBoat : MonoBehaviour
     {
         boatGameObject = boat;
         positionOnBoatXAxis = posOnBoat;
-        Debug.Log("needCheckGround");
+        //Debug.Log("needCheckGround");
     }
 
     // Update is called once per frame

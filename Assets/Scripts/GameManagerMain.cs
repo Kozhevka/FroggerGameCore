@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static GameStatusEnum;
 
@@ -18,7 +19,9 @@ public class GameManagerMain : MonoBehaviour
     Vector3 startPlayerPosition;
 
     GameStatusEnum gameStatusEnum;
-    
+
+    [SerializeField] TextMeshProUGUI balanceViewerStartWindow;
+    MainData mainDataScript;
 
     BarrierStartSpawn barrierStartSpawnScript;
 
@@ -35,7 +38,7 @@ public class GameManagerMain : MonoBehaviour
         scoreCountScript = this.gameObject.GetComponent<ScoreCount>();
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
 
-        spawnRoadManager = GameObject.Find("SkinShell").GetComponent<SpawnRoadManager>();
+        //spawnRoadManager = GameObject.Find("SkinShell").GetComponent<SpawnRoadManager>();
 
         stepsToSpawn = BarrierValueHolder.barrierValueHolder.stepsToSpawn;
 
@@ -48,7 +51,8 @@ public class GameManagerMain : MonoBehaviour
         playerNextPosition = GameObject.Find("PlayerNextPosition");
         playerCurrentPosition = GameObject.Find("PlayerCurrentPosition");
         startPlayerPosition = playerNextPosition.transform.position;
-    
+
+        mainDataScript = MainData.mainDataScript;
     }
 
     // Update is called once per frame
@@ -62,13 +66,15 @@ public class GameManagerMain : MonoBehaviour
         //Debug.Log(" PlayerMadeStepForward " +vectorZposition);
         float nextZSpawnPosition = vectorZposition + (stepsToSpawn*stepDistance);
 
-        spawnRoadManager.SpawnOneRoad(nextZSpawnPosition);
+        
+        GameObject.FindGameObjectWithTag("SkinShell").GetComponent<SpawnRoadManager>().SpawnOneRoad(nextZSpawnPosition);
 
         scoreCountScript.OneStepScore();
     }
 
     public void RestartGame()
     {
+        balanceViewerStartWindow.text = "$: " + mainDataScript.Balance;
         playerNextPosition.transform.position = startPlayerPosition;
         playerCurrentPosition.transform.position = startPlayerPosition;
 
@@ -76,11 +82,11 @@ public class GameManagerMain : MonoBehaviour
 
         //Debug.Log("before restart score");
         scoreCountScript.RestartScore();
-        //Debug.Log("after restart score");
-        spawnRoadManager.DeactivateAllPooledRoads();
+        Debug.Log("Try fing SkinShell");
+        GameObject.Find("SkinShell").GetComponent<SpawnRoadManager>().DeactivateAllPooledRoads();
 
 
-
+        Debug.Log("Try restartSpawn");
         barrierStartSpawnScript.RestartSpawn();
     }
 }
