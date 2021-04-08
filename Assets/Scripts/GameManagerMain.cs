@@ -46,7 +46,7 @@ public class GameManagerMain : MonoBehaviour
 
         barrierStartSpawnScript = GameObject.Find("SkinShell").GetComponent<BarrierStartSpawn>();
 
-        Debug.Log($"desitance to spawn = {stepsToSpawn}");
+        //Debug.Log($"desitance to spawn = {stepsToSpawn}");
 
         playerNextPosition = GameObject.Find("PlayerNextPosition");
         playerCurrentPosition = GameObject.Find("PlayerCurrentPosition");
@@ -82,11 +82,11 @@ public class GameManagerMain : MonoBehaviour
 
         //Debug.Log("before restart score");
         scoreCountScript.RestartScore();
-        Debug.Log("Try fing SkinShell");
+        //Debug.Log("Try fing SkinShell");
         GameObject.Find("SkinShell").GetComponent<SpawnRoadManager>().DeactivateAllPooledRoads();
 
 
-        Debug.Log("Try restartSpawn");
+        //Debug.Log("Try restartSpawn");
         barrierStartSpawnScript.RestartSpawn();
     }
 }

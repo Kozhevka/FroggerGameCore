@@ -19,25 +19,25 @@ using UnityEngine;
             // If
             if (previousRoadType == 0)
             {
-                if (random < 75)
+                if (random <= 75)
                     return 0;
-                if (random > 75)
+                if (random >= 75)
                     return 1;
             }
             else if (previousRoadType == 1)
             {
-                if (random < 25)
+                if (random <= 25)
                     return 0;
-                if (random > 50)
+                if (random >= 50)
                     return 2;
                 else // between 25 and 50;
                     return 1;
             }
             else // if 2 or mistake and other
             {
-                if (random < 75)
+                if (random <= 75)
                     return 1;
-                if (random > 75)
+                if (random >= 75)
                     return 0;
             }
             return 0;

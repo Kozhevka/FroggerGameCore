@@ -127,10 +127,13 @@ public class PlayerMove : MonoBehaviour
         //Raycast for check ground tag ************************************************************************************************************
         RaycastHit hit;
         Physics.Raycast(this.transform.position, Vector3.down, out hit, distanceToCheck);
-        
+
         //Debug.Log($"Player stay on: {hit.transform.gameObject.tag}");
 
-        if (hit.transform.tag == "Boat")
+
+        if (hit.transform == null)
+            Debug.Log("Raycast hit nothin"); 
+        else if (hit.transform.tag == "Boat")
         {
             playerOnBoat = true;
             float positionOnBoatXAxis = hit.point.x - hit.transform.position.x;
@@ -138,7 +141,7 @@ public class PlayerMove : MonoBehaviour
             playerOnBoatScript.enabled = true;
             playerOnBoatScript.NeedCheckGround(hit.transform.gameObject, positionOnBoatXAxis);
         }
-        else if(hit.transform.tag == "Road")
+        else if (hit.transform.tag == "Road")
         {
             playerOnBoatScript.enabled = false;
             //gameManagerObject.GetComponent<UI_GameOver>().GameOver();
@@ -156,6 +159,7 @@ public class PlayerMove : MonoBehaviour
             gameManagerObject.GetComponent<UI_GameOver>().GameOver();
             //Debug.Log("Water");
         }
+        
 
 
 

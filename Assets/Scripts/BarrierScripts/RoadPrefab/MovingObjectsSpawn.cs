@@ -73,13 +73,13 @@ public class MovingObjectsSpawn : MonoBehaviour
         
         int random = Random.Range(1, 10);
         //Debug.Log($"random = {random}");
-        if (random < 4)
+        if (random <= 4)
         {
             waitTimeToNextSpawn = 3f;
             return 0; //small car
             
         }
-        else if (random > 8)
+        else if (random >= 8)
         {
             waitTimeToNextSpawn = 4.5f;
             return 2; //big car
@@ -121,7 +121,7 @@ public class MovingObjectsSpawn : MonoBehaviour
             
             barrierCar.SetActive(true);
         }
-        if (barrierCar == null)
-            Debug.Log("Spawn one object NULL");
+        //if (barrierCar == null)
+        //    Debug.Log("Spawn one object NULL");
     }
 }

@@ -26,6 +26,7 @@ public class UI_GameOver : MonoBehaviour
     ScoreCount scoreCount;
 
     BarrierStartSpawn barrierStartSpawnScript;
+    UI_TopScore topScoreScript;
 
     //PlayerData***********************************************************************
 
@@ -37,6 +38,7 @@ public class UI_GameOver : MonoBehaviour
         mainDataScript = GameObject.Find("PlayerData").GetComponent<MainData>();
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
         scoreCount = GameObject.Find("GameManager").GetComponent<ScoreCount>();
+        topScoreScript = this.gameObject.GetComponent<UI_TopScore>();
         barrierStartSpawnScript = GameObject.Find("BarrierSpawnManager").GetComponent<BarrierStartSpawn>();
 
         startPlayerPosition = playerNextPosition.transform.position; //positionAt start
@@ -48,6 +50,8 @@ public class UI_GameOver : MonoBehaviour
     {
         //Debug.Log("Game  Over!!!");
         mainDataScript.UpdateBalance((int)scoreCount.Score);
+        topScoreScript.GetNewResult((int)scoreCount.Score);
+
         gameStatusEnum.gameStatus = GameStatus.GameOver;
         
         ui_GameIsActive.SetActive(false);
@@ -58,8 +62,9 @@ public class UI_GameOver : MonoBehaviour
     }
     public void RestartGame()
     {
+        ui_GameIsActive.SetActive(false);
         ui_GameOver.SetActive(false);
-
+        
         mainGameManagerScript.RestartGame();
         //RoadPool.RoadPoolScript.DeactivateAllPooledRoads();
 

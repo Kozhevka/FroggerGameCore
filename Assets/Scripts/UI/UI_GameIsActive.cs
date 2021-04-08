@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UI_GameIsActive : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI[] scoreText;
 
 
     ScoreCount scoreCountScript;
@@ -19,9 +19,13 @@ public class UI_GameIsActive : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-        scoreText.text = "Score: " + scoreCountScript.Score;
+        foreach (var item in scoreText)
+        {
+            item.text = "Score: " + scoreCountScript.Score;
+        }
+        
     }
     
 }

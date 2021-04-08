@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class UI_Shop : MonoBehaviour
 {
-    
+
     MainData mainDataScript;
 
 
     [SerializeField] GameObject shopUI;
     [SerializeField] GameObject activateGameUI;
-    [SerializeField] TextMeshProUGUI balanceViewer;
+    [SerializeField] TextMeshProUGUI[] balanceViewer;
     
 
 
     [SerializeField] GameObject[] skinsList;
-    [SerializeField] GameObject[] skinsPrices;
+    [SerializeField] TextMeshProUGUI[] skinsPrices;
     [SerializeField] bool[] boughtSkins;
     int[] skinPricesInt;
 
     [SerializeField] GameObject[] enviromentList;
-    [SerializeField] GameObject[] enviromentPrices;
+    [SerializeField] TextMeshProUGUI[] enviromentPrices;
     [SerializeField]  bool[] boughtEnviroment;
     int[] enviromentPricesInt;
 
@@ -49,34 +49,34 @@ public class UI_Shop : MonoBehaviour
             boughtEnviroment[i] = mainDataScript.boughtEnviroment[i];
         }
 
-        
 
-        
-    }
 
-    private void OnEnable()
-    {
-        
-
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+        for (int i = 0; i < skinsPrices.Length; i++)
+        {
+            skinsPrices[i].text = "$ - " + skinPricesInt[i + 1];
+        }
+        for (int i = 0; i < enviromentPrices.Length; i++)
+        {
+            enviromentPrices[i].text = "$ - " + enviromentPricesInt[i + 1];
+        }
         
     }
+
 
     public void ActivateSkinButton(int skinNumber)
     {
         if (boughtSkins[skinNumber])
         {
-            Debug.Log("Skin already bought");
+            //Debug.Log("Skin already bought");
             ActivateSkinGameObject(skinNumber);
         }
         else if (!boughtSkins[skinNumber])
         {
             if (mainDataScript.BuySkin(skinNumber))
+            {
                 ActivateSkinGameObject(skinNumber);
+                skinsPrices[skinNumber - 1].gameObject.SetActive(false); // -1 means default(What havent price viever)
+            }
             
             UpdateShopUI();
         }
@@ -98,13 +98,16 @@ public class UI_Shop : MonoBehaviour
     {
         if (boughtEnviroment[envNumber])
         {
-            Debug.Log("Skin already bought");
+            //Debug.Log("Skin already bought");
             ActivateEnvGameObject(envNumber);
         }
         else if (!boughtEnviroment[envNumber])
         {
             if (mainDataScript.BuyEnviroment(envNumber))
+            {
                 ActivateEnvGameObject(envNumber);
+                enviromentPrices[envNumber - 1].gameObject.SetActive(false); // -1 means default(What havent price viever)
+            }
             UpdateShopUI();
         }
 
@@ -139,11 +142,15 @@ public class UI_Shop : MonoBehaviour
 
     void UpdateBalance()
     {
-        balanceViewer.text = "$: " + mainDataScript.Balance;
+        foreach (var item in balanceViewer)
+        {
+            item.text = "$: " + mainDataScript.Balance;
+        }
     }
 
-
-    void HidePriceIfBought()
+    
+    //Can be useful for save-load progress.
+    /*void HidePriceIfBought()
     {
         //Hide price if bought
         for (int i = 0; i < (boughtSkins.Length - 1); i++) // -1 means -Default what havent price;
@@ -157,13 +164,13 @@ public class UI_Shop : MonoBehaviour
             if (boughtEnviroment[i + 1])
                 enviromentPrices[i].SetActive(false);
         }
-    }
+    }*/
 
 
     void UpdateShopUI()
     {
         UpdateBalance();
-        HidePriceIfBought();
+        //HidePriceIfBought();
     }
 
 }

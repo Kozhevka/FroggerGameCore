@@ -57,7 +57,7 @@ public class MainData : MonoBehaviour
         {
             boughtSkins[skinNumber] = true;
             Balance -= skinPrices[skinNumber];
-            Debug.Log("Buying complete");
+            //Debug.Log("Buying complete");
             return true;
         }
 
@@ -80,7 +80,7 @@ public class MainData : MonoBehaviour
         {
             boughtEnviroment[envNumber] = true;
             Balance -= enviromentPrices[envNumber];
-            Debug.Log("Buying complete");
+            //Debug.Log("Buying complete");
             return true;
         }
 

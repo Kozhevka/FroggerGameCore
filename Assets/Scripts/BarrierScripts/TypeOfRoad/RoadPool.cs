@@ -62,7 +62,7 @@ public class RoadPool : MonoBehaviour
         }
     }
 
-    public void DeletePool()
+    public void DeletePool() //Run if skin change
     {
         foreach (var item in pooledRoads)
         {
