@@ -25,7 +25,7 @@ public class BarrierDeactivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (((player.position.z - (stepDistance * 2)) > this.transform.position.z) //*2 means 2 steps behinde
+        if (((player.position.z - (stepDistance * 3)) > this.transform.position.z) //*3 means 3 steps behinde
             || (this.transform.position.z > (player.position.z + distanceForwardPlayer+1))) //+1 means some distance forward. Without, road "can" deActivate after spawn
         {
             gameObject.SetActive(false);

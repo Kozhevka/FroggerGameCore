@@ -541,12 +541,10 @@ MonoBehaviour:
   repeatSpawnPoint: {fileID: 1669979929937586814}
   onEnableSpawnPoints:
   - {fileID: 2043057312015243210}
-  - {fileID: 5382381295267275076}
   - {fileID: 6798279580937684997}
-  - {fileID: 584434401642733945}
   - {fileID: 1485203029432399747}
-  - {fileID: 605629690424486990}
   poolOfObjects: {fileID: 7121868281827831176}
+  spdMultiplier: 0.01
   minAndMaxSpeed: {x: 2, y: 3.5}
 --- !u!1 &7672193931715136193
 GameObject:

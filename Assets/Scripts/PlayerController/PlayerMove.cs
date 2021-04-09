@@ -70,7 +70,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (playerStatic || playerOnBoat) //move input
             {
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     smoothMoveBodyScript.LookAtDirection(new Vector3(0,0,0));
                     MovePlayer(0, stepDistance, true);

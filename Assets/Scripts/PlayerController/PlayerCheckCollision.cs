@@ -15,7 +15,7 @@ public class PlayerCheckCollision : MonoBehaviour
     // Player Manager (visual stuff)
     GameObject playerManagerObject;
 
-    PlayerSkinEnum playerSkinEnumScript;
+    
     //EnviromentSkinEnum enviromentSkinEnumScript;
     // Start is called before the first frame update
     void Start()
@@ -35,14 +35,19 @@ public class PlayerCheckCollision : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Barrier"))
         {
             
             gameManagerObject.GetComponent<UI_GameOver>().GameOver();
-
+        
         }
     }
-    
+    //public void On(Collision collision)
+    //{
+    //    
+    //}
+
+
 }

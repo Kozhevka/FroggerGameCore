@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7517422670899078798
 Transform:
   m_ObjectHideFlags: 0
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae075b8e6b8b0544b2a7fe50945ee0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadToPoolList: {fileID: 3340214247851100918, guid: 9ba9eea43aba93145bb81a437b401953, type: 3}
-  amountRoadToPool: 11
+  roadToPoolList: {fileID: 5021897545603764330, guid: 5b5d9b12a115f4a4e9c9ae2d4e6e87fb, type: 3}
+  amountRoadToPool: 15
   skinHolder: {fileID: 8222753400690691665}
 --- !u!1 &8222753400681372863
 GameObject:
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 8222753400690691669}
   m_Layer: 0
   m_Name: SkinShell
-  m_TagString: Untagged
+  m_TagString: SkinShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,5 +259,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadToPoolList: {fileID: 3340214247851100918, guid: 1c0fa5fcee3a71843830778833dcde7a, type: 3}
-  amountRoadToPool: 11
+  amountRoadToPool: 15
   skinHolder: {fileID: 8222753400690691665}

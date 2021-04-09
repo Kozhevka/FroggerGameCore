@@ -27,7 +27,7 @@ public class MainData : MonoBehaviour
 
     void Start()
     {
-        Balance = 100;
+        //Balance = 100;
     }
 
     // Update is called once per frame

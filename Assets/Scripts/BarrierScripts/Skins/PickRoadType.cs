@@ -6,7 +6,12 @@ using UnityEngine;
     public class PickRoadType : MonoBehaviour
     {
     //int previousRoadType = 0;
+    float wasCarWillForest = 65;
 
+    float wasTreeWillRoad = 25f;
+    float wasTreeWillTree = 60f;
+
+    float wasRiverWillTree = 50f;
 
         public int GetRoadType(int previousRoadType)
         {
@@ -17,27 +22,27 @@ using UnityEngine;
             // If was road (25/75 - tree/road)
             // If was tree (25/25/50 - road/tree/river
             // If
-            if (previousRoadType == 0)
+            if (previousRoadType == 0) //if road
             {
-                if (random <= 75)
+                if (random <= wasCarWillForest)
                     return 0;
-                if (random >= 75)
+                if (random > wasCarWillForest)
                     return 1;
             }
-            else if (previousRoadType == 1)
+            else if (previousRoadType == 1) //if tree
             {
-                if (random <= 25)
+                if (random <= wasTreeWillRoad)
                     return 0;
-                if (random >= 50)
+                if (random > wasTreeWillTree)
                     return 2;
                 else // between 25 and 50;
                     return 1;
             }
-            else // if 2 or mistake and other
+            else // if river or mistake and other
             {
-                if (random <= 75)
+                if (random <= wasRiverWillTree)
                     return 1;
-                if (random >= 75)
+                if (random > wasRiverWillTree)
                     return 0;
             }
             return 0;

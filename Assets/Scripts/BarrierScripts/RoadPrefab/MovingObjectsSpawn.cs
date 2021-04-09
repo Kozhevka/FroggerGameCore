@@ -13,20 +13,31 @@ public class MovingObjectsSpawn : MonoBehaviour
     [SerializeField] GameObject poolOfObjects;
     MovingObjectsPool movingObjectsPoolScript;
 
-    [SerializeField] Vector2 minAndMaxSpeed;
-    float speedOfthisRoad;
+    
 
     int typeOfNextCar = 0;
     float waitTimeToNextSpawn = 0;
     float seconds;
 
     bool didThatAStatic = false;
-    
+
+    float speedOfthisRoad;
+    // Multiplier Road Speed
+    [Header("RoadSpeed = rand_MinMaxSpeed + (spdMultiplier * score)")]
+    float score;
+    [SerializeField] float spdMultiplier = 0.01f;
+    [SerializeField] Vector2 minAndMaxSpeed;
+
+    [SerializeField] float timeWaitAfterSmall = 2f;
+    [SerializeField] float timeWaitAfterMedium = 3f;
+    [SerializeField] float timeWaitAfterBig = 4f;
 
     private void Awake()
     {
         movingObjectsPoolScript = poolOfObjects.GetComponent<MovingObjectsPool>();
-        speedOfthisRoad = Random.Range(minAndMaxSpeed.x, minAndMaxSpeed.y);
+
+        score = GameObject.Find("GameManager").GetComponent<ScoreCount>().Score;
+        speedOfthisRoad = (Random.Range(minAndMaxSpeed.x, minAndMaxSpeed.y)) + (spdMultiplier * score);
     }
 
     public void OnEnableSpawn()
@@ -75,18 +86,18 @@ public class MovingObjectsSpawn : MonoBehaviour
         //Debug.Log($"random = {random}");
         if (random <= 4)
         {
-            waitTimeToNextSpawn = 3f;
+            waitTimeToNextSpawn = timeWaitAfterSmall;
             return 0; //small car
             
         }
         else if (random >= 8)
         {
-            waitTimeToNextSpawn = 4.5f;
+            waitTimeToNextSpawn = timeWaitAfterMedium;
             return 2; //big car
         }
         else
         {
-            waitTimeToNextSpawn = 6f;
+            waitTimeToNextSpawn = timeWaitAfterBig;
             return 1; // medium car
         }
     }

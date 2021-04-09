@@ -22,6 +22,7 @@ public class UI_ActivateGame : MonoBehaviour
         
 
         gameStatusEnum = GameObject.Find("GameManager").GetComponent<GameStatusEnum>();
+
         Application.targetFrameRate = 60;
 
        
