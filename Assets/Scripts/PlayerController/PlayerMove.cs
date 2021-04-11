@@ -36,6 +36,13 @@ public class PlayerMove : MonoBehaviour
     PlayerOnBoat playerOnBoatScript;
     float distanceToCheck = 0.5f;
 
+    //Input.GetTouch --------------------------------------
+    [SerializeField] RectTransform inputArea;
+    [SerializeField] Camera mainCamera;
+    private Touch theTouch;
+    private Vector2 touchStartPosition, touchEndPosition;
+    private string direction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,42 +77,93 @@ public class PlayerMove : MonoBehaviour
         {
             if (playerStatic || playerOnBoat) //move input
             {
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetTouch(0).phase == TouchPhase.Began)
+
+                theTouch = Input.GetTouch(0);
+                //TouchScreen input
+                if (Input.touchCount > 0)
                 {
-                    smoothMoveBodyScript.LookAtDirection(new Vector3(0,0,0));
-                    MovePlayer(0, stepDistance, true);
-                }
                     
+                    if(theTouch.phase == TouchPhase.Began)
+                    {
+                        touchStartPosition = theTouch.position;
+                    }
+                    else if (theTouch.phase == TouchPhase.Ended)
+                    {
+                        touchEndPosition = theTouch.position;
+
+                        float x = touchEndPosition.x - touchStartPosition.x;
+                        float y = touchEndPosition.y - touchStartPosition.y;
+
+                        if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
+                        {
+                            MoveForward();
+                        }
+                        else if (Mathf.Abs(x) > Mathf.Abs(y))
+                        {
+                            if (x > 0)
+                            {
+                                MoveRight();
+                            }
+                            else if (x < 0)
+                            {
+                                MoveLeft();
+                            }
+
+                        }
+                        else if (Mathf.Abs(y) > Mathf.Abs(x))
+                        {
+                            if (y > 0)
+                            {
+                                MoveForward();
+                            }
+                        }
+                        
+                    }
+                }
+                
 
 
+                //Keyboard Input
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    MoveForward();
+                }
                 else if (Input.GetKeyDown(KeyCode.A)) //else for disable diogonale move
                 {
-                    smoothMoveBodyScript.LookAtDirection(new Vector3(0, -90, 0));
-                    MovePlayer(-stepDistance/2, 0, false);
+                    MoveLeft();
                 }
-                    
-
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
-                    smoothMoveBodyScript.LookAtDirection(new Vector3(0, 90, 0));
-                    MovePlayer(stepDistance/2, 0, false);
+                    MoveRight();
                 }
-                    
-
             }
         }
     }
 
+     void MoveForward()
+    {
+        smoothMoveBodyScript.LookAtDirection(new Vector3(0, 0, 0));
+        MovePlayer(0, stepDistance, true);
+    }
+    void MoveLeft()
+    {
+        smoothMoveBodyScript.LookAtDirection(new Vector3(0, -90, 0));
+        MovePlayer(-stepDistance / 2, 0, false);
+    }
+    void MoveRight()
+    {
+        smoothMoveBodyScript.LookAtDirection(new Vector3(0, 90, 0));
+        MovePlayer(stepDistance / 2, 0, false);
+    }
+
     private void CheckIfStatic()
     {
-        if (thisTransform.position == playerBody.position)
-            playerStatic = true;
-        else if (thisTransform.position != playerBody.position)
-            playerStatic = false;
+        playerStatic = thisTransform.position == playerBody.position ? true : false;
     }
 
     private void MovePlayer(float sideStepDistance, float forwardStepDistance, bool forwardMove)
     {
+        playerStatic = false;
         float nextPosition = (Mathf.Round((thisTransform.position.z / stepDistance)) * stepDistance) + stepDistance; //nextPosition can / 2 int(stepDistance)
         
         
