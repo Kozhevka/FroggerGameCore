@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -270, y: -129}
+  m_AnchoredPosition: {x: -270, y: -130}
   m_SizeDelta: {x: -540, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &165428104
@@ -1854,7 +1854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 270, y: -129}
+  m_AnchoredPosition: {x: 270, y: -130}
   m_SizeDelta: {x: -540, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309075829
@@ -2042,6 +2042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui_StartMenu: {fileID: 283173658}
   ui_IsGameActive: {fileID: 463770882}
+  inputHolder: {fileID: 577027991}
 --- !u!114 &350500988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,6 +2076,7 @@ MonoBehaviour:
   ui_StartMenu: {fileID: 283173658}
   playerNextPosition: {fileID: 577027992}
   playerCurrentPosition: {fileID: 707583593}
+  inputHolder: {fileID: 577027991}
 --- !u!114 &350500990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2135,6 +2137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActiveUI: {fileID: 463770882}
   pauseUI: {fileID: 737075991}
+  inputHolder: {fileID: 577027991}
 --- !u!114 &350500993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3030,9 +3033,9 @@ RectTransform:
   m_Father: {fileID: 151252726}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 585.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -375}
   m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525572928
@@ -3140,6 +3143,7 @@ GameObject:
   - component: {fileID: 577027992}
   - component: {fileID: 577027993}
   - component: {fileID: 577027994}
+  - component: {fileID: 577027995}
   m_Layer: 0
   m_Name: PlayerNextPosition
   m_TagString: Untagged
@@ -3177,8 +3181,6 @@ MonoBehaviour:
   playerBody: {fileID: 707583593}
   playerStatic: 1
   playerOnBoat: 0
-  inputArea: {fileID: 1552812767}
-  mainCamera: {fileID: 963194227}
 --- !u!114 &577027994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3191,6 +3193,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92ba516ff2c6574cafa0f8cb0ef3d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &577027995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577027991}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc347e2e58f48194daadce8df2ec0d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoveHolder: {fileID: 577027991}
+  upperButtonOnActiveGame: {fileID: 165428104}
 --- !u!1 &591341052
 GameObject:
   m_ObjectHideFlags: 0

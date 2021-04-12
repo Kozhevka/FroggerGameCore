@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static GameStatusEnum;
 
 public class PlayerMove : MonoBehaviour
@@ -36,12 +38,7 @@ public class PlayerMove : MonoBehaviour
     PlayerOnBoat playerOnBoatScript;
     float distanceToCheck = 0.5f;
 
-    //Input.GetTouch --------------------------------------
-    [SerializeField] RectTransform inputArea;
-    [SerializeField] Camera mainCamera;
-    private Touch theTouch;
-    private Vector2 touchStartPosition, touchEndPosition;
-    private string direction;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -52,15 +49,13 @@ public class PlayerMove : MonoBehaviour
 
         mainGameManagerScript = gameManagerObject.GetComponent<GameManagerMain>();
 
-        
-
         gameStatusEnum = gameManagerObject.GetComponent<GameStatusEnum>();
 
         smoothMoveBodyScript = playerBody.GetComponent<SmoothMoveBody>();
         
-
         playerOnBoatScript = this.gameObject.GetComponent<PlayerOnBoat>();
 
+        
     }
     private void OnEnable()
     {
@@ -78,49 +73,56 @@ public class PlayerMove : MonoBehaviour
             if (playerStatic || playerOnBoat) //move input
             {
 
-                theTouch = Input.GetTouch(0);
+                
                 //TouchScreen input
-                if (Input.touchCount > 0)
+                /*if (Input.touchCount > 0) // && ) 
                 {
-                    
-                    if(theTouch.phase == TouchPhase.Began)
+                    theTouch = Input.GetTouch(0);
+                    bool touchContiniue;
+                    if(theTouch.position.y < Screen.height - upperButtonHeight)
+                    // && touch not ower ui
                     {
-                        touchStartPosition = theTouch.position;
-                    }
-                    else if (theTouch.phase == TouchPhase.Ended)
-                    {
-                        touchEndPosition = theTouch.position;
-
-                        float x = touchEndPosition.x - touchStartPosition.x;
-                        float y = touchEndPosition.y - touchStartPosition.y;
-
-                        if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
+                        if (theTouch.phase == TouchPhase.Began)
                         {
-                            MoveForward();
+                            touchStartPosition = theTouch.position;
+                            touchContiniue = true;
                         }
-                        else if (Mathf.Abs(x) > Mathf.Abs(y))
+                        else if (theTouch.phase == TouchPhase.Ended)
                         {
-                            if (x > 0)
-                            {
-                                MoveRight();
-                            }
-                            else if (x < 0)
-                            {
-                                MoveLeft();
-                            }
+                            touchEndPosition = theTouch.position;
 
-                        }
-                        else if (Mathf.Abs(y) > Mathf.Abs(x))
-                        {
-                            if (y > 0)
+                            float x = touchEndPosition.x - touchStartPosition.x;
+                            float y = touchEndPosition.y - touchStartPosition.y;
+
+                            if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
                             {
                                 MoveForward();
                             }
+                            else if (Mathf.Abs(x) > Mathf.Abs(y))
+                            {
+                                if (x > 0)
+                                {
+                                    MoveRight();
+                                }
+                                else if (x < 0)
+                                {
+                                    MoveLeft();
+                                }
+
+                            }
+                            else if (Mathf.Abs(y) > Mathf.Abs(x))
+                            {
+                                if (y > 0)
+                                {
+                                    MoveForward();
+                                }
+                            }
+                            touchContiniue = false;
+
                         }
-                        
                     }
                 }
-                
+                */
 
 
                 //Keyboard Input
@@ -140,23 +142,23 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-     void MoveForward()
+    public void MoveForward()
     {
         smoothMoveBodyScript.LookAtDirection(new Vector3(0, 0, 0));
         MovePlayer(0, stepDistance, true);
     }
-    void MoveLeft()
+    public void MoveLeft()
     {
         smoothMoveBodyScript.LookAtDirection(new Vector3(0, -90, 0));
         MovePlayer(-stepDistance / 2, 0, false);
     }
-    void MoveRight()
+    public void MoveRight()
     {
         smoothMoveBodyScript.LookAtDirection(new Vector3(0, 90, 0));
         MovePlayer(stepDistance / 2, 0, false);
     }
 
-    private void CheckIfStatic()
+    public void CheckIfStatic()
     {
         playerStatic = thisTransform.position == playerBody.position ? true : false;
     }
@@ -217,10 +219,6 @@ public class PlayerMove : MonoBehaviour
             gameManagerObject.GetComponent<UI_GameOver>().GameOver();
             //Debug.Log("Water");
         }
-        
-
-
-
     }
 
     private void LateUpdate()

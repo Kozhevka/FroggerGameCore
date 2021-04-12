@@ -75,8 +75,8 @@ public class UI_TopScore : MonoBehaviour
 
     public void ExitTopRatingButton()
     {
-        topScoreUI.SetActive(false);
         startMenuUI.SetActive(true);
+        topScoreUI.SetActive(false);
         
     }
 }

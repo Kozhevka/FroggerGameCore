@@ -32,6 +32,10 @@ public class UI_GameOver : MonoBehaviour
 
     MainData mainDataScript;
 
+    //Input Disabable
+    [SerializeField] GameObject inputHolder;
+    TouchInput touchInputScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +47,8 @@ public class UI_GameOver : MonoBehaviour
 
         startPlayerPosition = playerNextPosition.transform.position; //positionAt start
 
+        touchInputScript = inputHolder.GetComponent<TouchInput>();
+
         mainGameManagerScript = this.gameObject.GetComponent<GameManagerMain>();
     }
 
@@ -53,6 +59,7 @@ public class UI_GameOver : MonoBehaviour
         topScoreScript.GetNewResult((int)scoreCount.Score);
 
         gameStatusEnum.gameStatus = GameStatus.GameOver;
+        touchInputScript.enabled = false;
         
         ui_GameIsActive.SetActive(false);
         ui_GameOver.SetActive(true);
