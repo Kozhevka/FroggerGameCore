@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TouchInput : MonoBehaviour
 {
-    [SerializeField] GameObject playerMoveHolder;
+    
     PlayerMove playerMoveScript;
 
     bool playerStatic;
@@ -26,7 +26,7 @@ public class TouchInput : MonoBehaviour
 
     void Start()
     {
-        playerMoveScript = playerMoveHolder.GetComponent<PlayerMove>();
+        playerMoveScript = this.gameObject.GetComponent<PlayerMove>();
 
         upperButtonHeight = upperButtonOnActiveGame.GetComponent<RectTransform>().rect.height;
     }
@@ -58,14 +58,14 @@ public class TouchInput : MonoBehaviour
         if (Input.touchCount > 0) // && ) 
         {
             theTouch = Input.GetTouch(0);
-            bool touchContiniue;
+            
             if (theTouch.position.y < Screen.height - upperButtonHeight)
             // && touch not ower ui
             {
                 if (theTouch.phase == TouchPhase.Began)
                 {
                     touchStartPosition = theTouch.position;
-                    touchContiniue = true;
+                    
                 }
                 else if (theTouch.phase == TouchPhase.Ended)
                 {
@@ -97,7 +97,7 @@ public class TouchInput : MonoBehaviour
                             playerMoveScript.MoveForward();
                         }
                     }
-                    touchContiniue = false;
+                    
 
                 }
             }
