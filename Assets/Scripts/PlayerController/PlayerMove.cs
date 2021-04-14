@@ -38,8 +38,8 @@ public class PlayerMove : MonoBehaviour
     PlayerOnBoat playerOnBoatScript;
     float distanceToCheck = 0.5f;
 
-    
 
+    bool outBorders = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -141,6 +141,16 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+    private void LateUpdate()
+    {
+        if ((thisTransform.position.x < -borderOfPlayzone
+            || thisTransform.position.x > borderOfPlayzone) && !outBorders)
+        {
+            outBorders = true;
+            gameManagerObject.GetComponent<UI_GameOver>().GameOver();
+            playerOnBoatScript.enabled = false;
+        }
+    }
 
     public void MoveForward()
     {
@@ -165,6 +175,8 @@ public class PlayerMove : MonoBehaviour
 
     private void MovePlayer(float sideStepDistance, float forwardStepDistance, bool forwardMove)
     {
+        outBorders = false; //if PLayer can move than game in isGameActive Enum. need for call GameOver once if player out from border
+
         playerStatic = false;
         float nextPosition = (Mathf.Round((thisTransform.position.z / stepDistance)) * stepDistance) + stepDistance; //nextPosition can / 2 int(stepDistance)
         
@@ -221,14 +233,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        if(thisTransform.position.x < -borderOfPlayzone
-            || thisTransform.position.x > borderOfPlayzone)
-        {
-            gameManagerObject.GetComponent<UI_GameOver>().GameOver();
-        }
-    }
+    
 
 
 }

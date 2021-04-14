@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameStatusEnum;
 
 
 public class PlayerCheckCollision : MonoBehaviour
 {
-    
+    GameStatusEnum gameStatusEnum;
 
     // Game manager (game status)
     GameObject gameManagerObject;
@@ -21,33 +22,24 @@ public class PlayerCheckCollision : MonoBehaviour
     void Start()
     {
         gameManagerObject = GameObject.Find("GameManager");
-        
-        
+
+        gameStatusEnum = gameManagerObject.GetComponent<GameStatusEnum>();
 
         playerManagerObject = GameObject.Find("PlayerManager");
-        //playerSkinEnumScript = playerManagerObject.GetComponent<PlayerSkinEnum>();
-        //enviromentSkinEnumScript = playerManagerObject.GetComponent<EnviromentSkinEnum>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Barrier"))
+        if (collision.gameObject.CompareTag("Barrier") && gameStatusEnum.gameStatus == GameStatus.GameIsActive)
         {
             
             gameManagerObject.GetComponent<UI_GameOver>().GameOver();
         
         }
     }
-    //public void On(Collision collision)
-    //{
-    //    
-    //}
+    
 
 
 }
